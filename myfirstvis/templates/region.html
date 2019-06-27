@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<title>毒情评估</title>
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/static/css/app.css" />
+		{% for jsfile_name in script_list %}
+    	<script src="{{host}}/{{jsfile_name}}.js"></script>
+    	{% endfor %}
+	</head>
+	
+	<body class="bg05">
+		<header class="header">
+			<h3>毒情评估</h3>
+		</header>
+		<div align="center">
+			{{mymap|safe}}<br>
+			{{mybar|safe}}
+		</div>
+	</body>
+</html>
