@@ -5,43 +5,67 @@
     <title>毒情新闻自动提取</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/demo.css" />
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/menu_topside.css" />
+    <!--[if IE]>
+    <script src="/static/js/html5.js"></script>
+    <![endif]-->
+
     <link rel="stylesheet" href="/static/css/app.css" />
-
+<style>
+    .div-inline{float: left}
+    .boxes{color: rgba(212, 215, 229, 0.8);}
+</style>
 </head>
-<body class="bg06">
-    <div align="center" style="color:#85ff58">
+<body class="bg05">
+    <header class="header">
+        <h3>毒情评估系统</h3>
+    </header>
+    <div class="div-inline">
+        <nav class="menu-side" style="width: 290px">
+            <a href="news">新闻提取</a>
+            <a href="region">毒情展示</a>
+            <a href="sentiment">情感分类</a>
+            <a href="demo">涉毒舆情实例</a>
+        </nav>
+    </div>
+    <div class="div-inline">
+<!--        style="color:#85ff58"-->
+        <div align="center" style="color:#85ff58">
+            <form action="/drug/news" method="post">
+                {%csrf_token%}
+                <h4>新闻地址输入(地址集合)</h4>
+                <textarea class="boxes" type="text" rows="10" cols="60" name="urls" style="background:transparent">(空格或者换行分隔)</textarea>
+                <select name="sel_year">
+                    <option value="0">全部年份</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                </select>
+                <br>
+                <input type="submit" value="提交解析" style="background:rgba(253,251,239,0.73);">
+            </form>
 
-        <form action="/drug/news" method="post">
-            {%csrf_token%}
-            <h4>新闻地址输入(地址集合)</h4>
-            <textarea type="text" rows="10" cols="60" name="urls" style="background:transparent">(空格或者换行分隔)</textarea>
-            <select name="sel_year">
-                <option value="0">全部年份</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-                <option value="2017">2017</option>
-                <option value="2016">2016</option>
-                <option value="2015">2015</option>
-                <option value="2014">2014</option>
-                <option value="2013">2013</option>
-                <option value="2012">2012</option>
-                <option value="2011">2011</option>
-                <option value="2010">2010</option>
-            </select>
-            <br>
-            <input type="submit" value="提交解析" style="background:rgba(253,251,239,0.73);">
-        </form>
+            <h4>逐条新闻解析结果</h4>
+            <textarea class="boxes" type="text" rows="10" cols="120" style="background:transparent">
+                {% for news_item in news_items %}
+                    {{news_item}}
+                {% endfor %}
+            </textarea>
 
-        <h4>逐条新闻解析结果</h4>
-        <textarea type="text" rows="10" cols="120" style="background:transparent">
-            {% for news_item in news_items %}
-                {{news_item}}
-            {% endfor %}
-        </textarea>
-
-        <h4>所有新闻汇总结果(关键词：次数)</h4>
-        <textarea type="text" rows="15" cols="50" style="background:transparent">{{news_sum}}</textarea>
+            <h4>所有新闻汇总结果(关键词：次数)</h4>
+            <textarea class="boxes" type="text" rows="15" cols="50" style="background:transparent">{{news_sum}}</textarea>
+        </div>
     </div>
 </body>
 </html>

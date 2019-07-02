@@ -1,12 +1,11 @@
 from __future__ import unicode_literals
-import math
 import pandas as pd
 import re
-
 from django.http import HttpResponse
 from django.template import loader
 from pyecharts import Geo, Map, Bar
 from news_extract.news_extract import extract
+from sentiment_classify.classify import predict
 import numpy as np
 
 REMOTE_HOST = "https://pyecharts.github.io/assets/js"
@@ -41,7 +40,6 @@ def region(request):
         # is_piecewise=True,
         # visual_split_number=6,
     )
-
     data = []
     drugs = pd.read_csv('data/drugs.csv')
     for i in range(len(drugs)):
@@ -84,4 +82,29 @@ def news(request):
             news_sum = re.sub('[{}\']', '', news_sum)
             news_sum = news_sum.replace(',', '\n')
             context['news_sum'] = news_sum
+    return HttpResponse(template.render(context, request))
+
+
+def sentiment(request):
+    template = loader.get_template('sentiment.html')
+    context = dict()
+    if request.method == 'POST':
+        if request.POST:
+            raw = request.POST.get('comments', '')
+            comments = raw.split()
+            res = predict(comments)
+            display = ''
+            for x in res:
+                if x == 1:
+                    display += '接纳吸毒\n'
+                else:
+                    display += '抵制吸毒\n'
+            context['display'] = display
+            context['comments'] = raw
+    return HttpResponse(template.render(context, request))
+
+
+def demo(request):
+    template = loader.get_template('demo.html')
+    context = dict()
     return HttpResponse(template.render(context, request))
