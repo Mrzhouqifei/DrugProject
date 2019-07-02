@@ -32,7 +32,7 @@
     </header>
     <div>
         <div class="div-inline">
-            <nav class="menu-side" style="width: 535px">
+            <nav class="menu-side" style="width: 300px">
                 <a href="news">新闻提取</a>
                 <a href="region">毒情展示</a>
                 <a href="sentiment">情感分类</a>
@@ -44,12 +44,12 @@
                 <form action="/drug/sentiment" method="post">
                     {%csrf_token%}
                     <h4>待分类评论：</h4>
-                    <textarea class="boxes" type="text" rows="5" cols="50" name="comments" style="background:transparent">{{comments}}</textarea>
+                    <textarea class="boxes" type="text" rows="15" cols="120" name="comments" style="background:transparent">{{comments}}</textarea>
                     <br>
                     <input type="submit" value="智能评估" style="background:rgba(253,251,239,0.73);">
                 </form>
                 <h4>基于深度学习的情绪分类结果:</h4>
-                <textarea class="boxes" type="text" rows="5" cols="50" style="background:transparent">{{display}}</textarea>
+                <textarea class="boxes" type="text" rows="15" cols="50" style="background:transparent">{{display}}</textarea>
             </div>
         </div>
     </div>

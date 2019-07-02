@@ -106,5 +106,32 @@ def sentiment(request):
 
 def demo(request):
     template = loader.get_template('demo.html')
+    zhendong = pd.read_csv('data/zhendong_res.csv')[['0', '1', 'year']]
+
+    zhendong14 = zhendong[zhendong['year'] == '2014'].drop(['year'], axis=1)
+    zhendong14 = zhendong14.reset_index(drop=True)
+    zhendong14.columns = [['关键词', '词频']]
+
+    zhendong15 = zhendong[zhendong['year'] == '2015'].drop(['year'], axis=1)
+    zhendong15 = zhendong15.reset_index(drop=True)
+    zhendong15.columns = [['关键词', '词频']]
+
+    zhendong16 = zhendong[zhendong['year'] == '2016'].drop(['year'], axis=1)
+    zhendong16 = zhendong16.reset_index(drop=True)
+    zhendong16.columns = [['关键词', '词频']]
+
+    zhendong17 = zhendong[zhendong['year'] == '2017'].drop(['year'], axis=1)
+    zhendong17 = zhendong17.reset_index(drop=True)
+    zhendong17.columns = [['关键词', '词频']]
+
+    zhendong18 = zhendong[zhendong['year'] == '2018'].drop(['year'], axis=1)
+    zhendong18 = zhendong18.reset_index(drop=True)
+    zhendong18.columns = [['关键词', '词频']]
+
     context = dict()
+    context['zhendong14'] = zhendong14
+    context['zhendong15'] = zhendong15
+    context['zhendong16'] = zhendong16
+    context['zhendong17'] = zhendong17
+    context['zhendong18'] = zhendong18
     return HttpResponse(template.render(context, request))
