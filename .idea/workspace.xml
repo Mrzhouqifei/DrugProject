@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbac5aac-fd9d-4c4d-8223-5a260f4c2bba" name="Default" comment="v1.0">
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_bubble.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_cornerbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_cornerbox_nested.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_cornermorph.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_elastic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_sideslide.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_topexpand.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_topside.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_wave.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/normalize.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/drugs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/drugs.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/region.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/region.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,47 +24,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myfirstvis/templates/sentiment.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-244">
-              <caret line="18" column="69" lean-forward="true" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
-              <folding>
-                <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#form#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myfirstvis/static/fonts/codropsicons/license.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myfirstvis/templates/region.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-              <folding>
-                <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myfirstvis/templates/demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
+            <state relative-caret-position="447">
+              <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -177,7 +149,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -196,11 +168,6 @@
               <item name="DrugProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="DrugProject" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="DrugProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DrugProject" type="462c0819:PsiDirectoryNode" />
-              <item name="myfirstvis" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -211,22 +178,22 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/myfirstvis/static/css" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myfirstvis/static/css" />
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/myfirstvis/static/img" />
+      <recent name="$PROJECT_DIR$/myfirstvis/templates" />
+      <recent name="$PROJECT_DIR$/myfirstvis/static" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$/myfirstvis/static" />
       <recent name="$PROJECT_DIR$/myfirstvis/templates" />
       <recent name="$PROJECT_DIR$/myfirstvis/templates/myfirstvis" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/data" />
-      <recent name="$PROJECT_DIR$/myfirstvis/static/img" />
-      <recent name="$PROJECT_DIR$/myfirstvis/templates" />
-      <recent name="$PROJECT_DIR$/myfirstvis/static" />
-      <recent name="$PROJECT_DIR$/myfirstvis/static/js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -336,7 +303,9 @@
       <workItem from="1561796378545" duration="11449000" />
       <workItem from="1562055068034" duration="6417000" />
       <workItem from="1562289554118" duration="54000" />
-      <workItem from="1562828150961" duration="537000" />
+      <workItem from="1562828150961" duration="1478000" />
+      <workItem from="1562860724062" duration="601000" />
+      <workItem from="1562898579763" duration="90000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0">
       <created>1561638246154</created>
@@ -366,16 +335,23 @@
       <option name="project" value="LOCAL" />
       <updated>1562063136891</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="v1.0">
+      <created>1562828780199</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1562828780199</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63613000" />
+    <option name="totallyTimeSpent" value="65245000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2739628" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2811159" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -385,7 +361,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.29808918" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2819277" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32900944" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32891566" />
@@ -586,7 +562,6 @@
     <entry file="file://$PROJECT_DIR$/data/drugs.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/static/css/demo.css" />
     <entry file="file://$PROJECT_DIR$/myfirstvis/static/js/classie.js" />
     <entry file="file://$PROJECT_DIR$/output/zhendong_res.csv">
       <provider selected="true" editor-type-id="text-editor">
@@ -604,10 +579,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/myfirstvis/static/fonts/codropsicons/license.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myfirstvis/static/css/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1049" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/myfirstvis/templates/sentiment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-244">
-          <caret line="18" column="69" lean-forward="true" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
+        <state relative-caret-position="357">
+          <caret line="21" column="55" lean-forward="true" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
           <folding>
             <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -618,16 +605,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/static/fonts/codropsicons/license.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myfirstvis/templates/region.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
+        <state relative-caret-position="515">
           <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -637,8 +617,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myfirstvis/templates/demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
+        <state relative-caret-position="447">
+          <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
