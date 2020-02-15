@@ -3,12 +3,27 @@ import pandas as pd
 import re
 from django.http import HttpResponse
 from django.template import loader
-from pyecharts import Geo, Map, Bar
+from pyecharts.charts import Geo, Map, Bar
+from pyecharts.globals import ThemeType
+from pyecharts import options as opts
 from news_extract.news_extract import extract
 from sentiment_classify.classify import predict
 import numpy as np
+from django.shortcuts import render
+from django.shortcuts import redirect
+from . import models
+from . import forms
+import hashlib
 
-REMOTE_HOST = "https://pyecharts.github.io/assets/js"
+
+
+def hash_code(s, salt='mysite'):# 加点盐
+    h = hashlib.sha256()
+    s += salt
+    h.update(s.encode())  # update方法只接收bytes类型
+    return h.hexdigest()
+
+# REMOTE_HOST = "https://pyecharts.github.io/assets/js"
 
 
 def region(request):
@@ -18,42 +33,40 @@ def region(request):
     :return:
     """
     template = loader.get_template('region.html')
-    data = []
     region = pd.read_csv('data/region.csv')
-    for i in range(len(region)):
-        temp = (region.city[i], region.num[i])
-        data.append(temp)
-    # data = [("海门", 9), ("鄂尔多斯", 12), ("大庆", 279)]
-    temp = np.array(data)
-    max_count = np.mean(temp[:,1].astype(int)) + 3 * np.std(temp[:,1].astype(int))
-    map = Map("中国毒情区域分布", "（数据主要来源于中国禁毒网|禁毒在线|头条等媒体)", title_color="#fff", title_pos="center",
-              width=1100, height=550, background_color='#404a59')
-    attr, value = map.cast(data)
-    map.add(
-        "",
-        attr,
-        value,
-        visual_range=[0, max_count],
-        visual_text_color="#fff",
-        symbol_size=15,
-        is_visualmap=True,
-        # is_piecewise=True,
-        # visual_split_number=6,
+    max_count = np.mean(region.num) + 3 * np.std(region.num)
+    #[("海门", 9), ("鄂尔多斯", 12), ("大庆", 279)]
+    cmap = (
+        Map(init_opts=opts.InitOpts(width="1100px", height="550px", theme=ThemeType.CHALK))
+        .add("涉毒数目", [list(z) for z in zip(list(region.city), list(region.num))], "china")
+        .set_global_opts(
+            title_opts=opts.TitleOpts(title="中国毒情区域分布", subtitle='数据主要来源于:中国禁毒网|禁毒在线|新浪新闻'),
+            visualmap_opts=opts.VisualMapOpts(max_=max_count, textstyle_opts=opts.TextStyleOpts(color='#fff')),
+            toolbox_opts=opts.ToolboxOpts(),
+        )
     )
-    data = []
+
     drugs = pd.read_csv('data/drugs.csv')
-    for i in range(len(drugs)):
-        temp = (drugs.drug[i], drugs.num[i])
-        data.append(temp)
-    attr, value = map.cast(data)
-    bar = Bar("毒品报道情况统计", background_color='rgba(253,251,239,0.73)', width=700, height=350)
-    bar.add("", attr, value, is_stack=True, xaxis_interval=0, is_label_show=True, mark_line=["average"])
+    bar = (
+        Bar(init_opts=opts.InitOpts(width="700px", height="350px", theme=ThemeType.CHALK))
+        .add_xaxis(list(drugs.drug))
+        .add_yaxis('数量', list(drugs.num))
+        .set_series_opts(
+            label_opts=opts.LabelOpts(is_show=True),
+            markline_opts=opts.MarkLineOpts(
+                data=[
+                    opts.MarkLineItem(type_="average", name="平均值"),
+                ]
+            ),
+        )
+        .set_global_opts(title_opts=opts.TitleOpts(title='毒品报道情况统计'),
+                         toolbox_opts=opts.ToolboxOpts(),
+                         xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=0)),)
+    )
 
     context = dict(
-        mymap=map.render_embed(),
+        mymap=cmap.render_embed(),
         mybar=bar.render_embed(),
-        host=REMOTE_HOST,
-        script_list=map.get_js_dependencies()
     )
     return HttpResponse(template.render(context, request))
 
@@ -135,3 +148,92 @@ def demo(request):
     context['zhendong17'] = zhendong17
     context['zhendong18'] = zhendong18
     return HttpResponse(template.render(context, request))
+
+def index(request):
+    if not request.session.get('is_login', None):
+        return redirect('/drug/login/')
+    return render(request, 'index.html')
+
+def login(request):
+    if request.session.get('is_login', None):  # 不允许重复登录
+        return redirect('/drug/index/')
+    if request.method == 'POST':
+        login_form = forms.UserForm(request.POST)
+        message = '请检查填写的内容！'
+        if login_form.is_valid():
+            username = login_form.cleaned_data.get('username')
+            password = login_form.cleaned_data.get('password')
+
+            try:
+                user = models.User.objects.get(name=username)
+            except :
+                message = '用户不存在！'
+                return render(request, 'login/login.html', locals())
+
+            if user.password == hash_code(password):
+                request.session['is_login'] = True
+                request.session['user_id'] = user.id
+                request.session['user_name'] = user.name
+                request.session['c_time'] = str(user.c_time)[0:10]
+                return redirect('/drug/index/')
+            else:
+                message = '密码不正确！'
+                return render(request, 'login/login.html', locals())
+        else:
+            return render(request, 'login/login.html', locals())
+
+    login_form = forms.UserForm()
+    return render(request, 'login/login.html', locals())
+
+
+def register(request):
+    if request.session.get('is_login', None):
+        return redirect('/drug/index/')
+
+    if request.method == 'POST':
+        register_form = forms.RegisterForm(request.POST)
+        message = "请检查填写的内容！"
+        if register_form.is_valid():
+            username = register_form.cleaned_data.get('username')
+            password1 = register_form.cleaned_data.get('password1')
+            password2 = register_form.cleaned_data.get('password2')
+            email = register_form.cleaned_data.get('email')
+            sex = register_form.cleaned_data.get('sex')
+
+            if password1 != password2:
+                message = '两次输入的密码不同！'
+                return render(request, 'login/register.html', locals())
+            else:
+                same_name_user = models.User.objects.filter(name=username)
+                if same_name_user:
+                    message = '用户名已经存在'
+                    return render(request, 'login/register.html', locals())
+                same_email_user = models.User.objects.filter(email=email)
+                if same_email_user:
+                    message = '该邮箱已经被注册了！'
+                    return render(request, 'login/register.html', locals())
+
+                new_user = models.User()
+                new_user.name = username
+                new_user.password = hash_code(password1)
+                new_user.email = email
+                new_user.sex = sex
+                new_user.save()
+
+                return redirect('/drug/login/')
+        else:
+            return render(request, 'login/register.html', locals())
+    register_form = forms.RegisterForm()
+    return render(request, 'login/register.html', locals())
+
+
+def logout(request):
+    if not request.session.get('is_login', None):
+        # 如果本来就未登录，也就没有登出一说
+        return redirect("/drug/login/")
+    request.session.flush()
+    # 或者使用下面的方法
+    # del request.session['is_login']
+    # del request.session['user_id']
+    # del request.session['user_name']
+    return redirect("/drug/login/")

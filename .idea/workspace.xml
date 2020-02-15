@@ -2,213 +2,396 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbac5aac-fd9d-4c4d-8223-5a260f4c2bba" name="Default" comment="v1.0">
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/demo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_bubble.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_cornerbox.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_cornerbox_nested.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_cornermorph.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_elastic.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_sideslide.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_topexpand.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_topside.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/menu_wave.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myfirstvis/static/css/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/AdminLTE.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/AdminLTE.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/adminlte.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/adminlte.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/alt/AdminLTE-bootstrap-social.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/alt/AdminLTE-bootstrap-social.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/alt/AdminLTE-fullcalendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/alt/AdminLTE-fullcalendar.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/alt/AdminLTE-select2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/alt/AdminLTE-select2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/alt/AdminLTE-without-plugins.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/alt/AdminLTE-without-plugins.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/_all-skins.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/_all-skins.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-black-light.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-black-light.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-black.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-black.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-blue-light.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-blue-light.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-blue.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-green-light.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-green-light.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-green.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-purple-light.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-purple-light.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-purple.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-red-light.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-red-light.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-red.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-yellow-light.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-yellow-light.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/css/skins/skin-yellow.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/avatar04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/avatar2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/avatar3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/avatar5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/credit/american-express.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/credit/cirrus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/credit/mastercard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/credit/mestro.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/credit/paypal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/credit/paypal2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/credit/visa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/default-50x50.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/photo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/photo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/photo3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/photo4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/user1-128x128.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/user2-160x160.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/user3-128x128.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/user4-128x128.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/user5-128x128.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/user6-128x128.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/user7-128x128.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/img/user8-128x128.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/js/adminlte.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/js/adminlte.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/js/demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/js/pages/dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/dist/js/pages/dashboard2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/bootstrap-slider/bootstrap-slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/bootstrap-slider/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/flat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/flat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/flat@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/flat/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/futurico/futurico.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/futurico/futurico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/futurico/futurico@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/icheck.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/icheck.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/line.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/line.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/line@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/line/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/minimal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/minimal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/minimal@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/minimal/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/polaris/polaris.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/polaris/polaris.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/polaris/polaris@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/_all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/aero.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/aero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/aero@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/blue@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/green@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/grey.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/grey@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/orange@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/pink.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/pink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/pink@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/purple.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/purple@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/red@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/square.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/square.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/square@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/iCheck/square/yellow@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/input-mask/jquery.inputmask.date.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/input-mask/jquery.inputmask.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/input-mask/jquery.inputmask.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/input-mask/jquery.inputmask.numeric.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/input-mask/jquery.inputmask.phone.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/input-mask/jquery.inputmask.regex.extensions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/input-mask/phone-codes/phone-be.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/input-mask/phone-codes/phone-codes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/input-mask/phone-codes/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/jQueryUI/jquery-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/jQueryUI/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/jvectormap/jquery-jvectormap-1.2.2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/jvectormap/jquery-jvectormap-usa-en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/pace/pace.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/pace/pace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/pace/pace.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/pace/pace.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/timepicker/bootstrap-timepicker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/timepicker/bootstrap-timepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/timepicker/bootstrap-timepicker.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/adminlet-2.4.10/plugins/timepicker/bootstrap-timepicker.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/animate.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/helper.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/ionicons.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/leaflet.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/magnific-popup.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/nice-select.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/slick.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/slicknav.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/fonts/ionicons.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/fonts/ionicons.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/fonts/ionicons.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/banner/banner-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/banner/banner-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/banner/banner-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/banner/banner-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/banner/banner-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/bg/bg-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/bg/bg-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/bg/bg-car.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/bg/deal-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/bg/newsletter-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/brand-logo/brand-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/brand-logo/brand-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/brand-logo/brand-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/brand-logo/brand-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/brand-logo/brand-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/extra/author-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/extra/author-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/extra/wheels.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/icons/cancel-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/icons/icon-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/icons/icon-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/icons/icon-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/leaflet/layers-2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/leaflet/layers.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/leaflet/marker-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/logo-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/logo-light2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/logo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-details-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-details-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-details-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-details-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/product/product-details-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/slider/slider-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/img/slider/slider-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/active.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/countdown.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/jquery-3.3.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/jquery-migrate-1.2.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/jquery.magnific-popup.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/jquery.nice-select.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/jquery.slicknav.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/leaflet.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/modernizr-3.6.0.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/assets/js/slick.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/login/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/login/css/register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/static/login/image/bg2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/templates/base_old.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/templates/index_old.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/templates/login/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myfirstvis/templates/login/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_extract/spider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DrugProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DrugProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/drugs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/drugs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myechartsite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myechartsite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myechartsite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myechartsite/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/sentiment.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/sentiment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/views.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myfirstvis/templates/demo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
-              <folding>
-                <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#4;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news_extract/china_forbidden.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/word_cloud/word_cloud.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myfirstvis/templates/news.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="7" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myfirstvis/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2159">
-              <caret line="135" column="23" selection-start-line="135" selection-start-column="23" selection-end-line="135" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///anaconda3/lib/python3.6/site-packages/pandas/core/frame.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52258">
-              <caret line="3168" column="8" selection-start-line="3168" selection-start-column="8" selection-end-line="3168" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myfirstvis/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/myfirstvis/templates/myfirstvis/regiondis.html" />
-        <option value="$PROJECT_DIR$/myfirstvis/templates/myfirstvis/pyecharts.html" />
-        <option value="$PROJECT_DIR$/myechartsite/settings.py" />
-        <option value="$PROJECT_DIR$/myfirstvis/templates/myfirstvis/regiondistribution.html" />
-        <option value="$PROJECT_DIR$/sentiment_classify/moiveRnn.py" />
-        <option value="$PROJECT_DIR$/sentiment_classify/classify.py" />
-        <option value="$PROJECT_DIR$/word_cloud/word_cloud.py" />
-        <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/myechartsite/urls.py" />
-        <option value="$PROJECT_DIR$/news_extract/urls.txt" />
-        <option value="$PROJECT_DIR$/news_extract/sina" />
-        <option value="$PROJECT_DIR$/news_extract/china_forbidden.txt" />
-        <option value="$PROJECT_DIR$/news_extract/news_extract.py" />
-        <option value="$PROJECT_DIR$/sentiment_classify/train.py" />
-        <option value="$PROJECT_DIR$/myfirstvis/static/fonts/codropsicons/license.txt" />
-        <option value="$PROJECT_DIR$/myfirstvis/templates/index.html" />
-        <option value="$PROJECT_DIR$/myfirstvis/templates/region_index.html" />
-        <option value="$PROJECT_DIR$/myfirstvis/templates/news.html" />
-        <option value="$PROJECT_DIR$/myfirstvis/templates/region.html" />
-        <option value="$PROJECT_DIR$/myfirstvis/urls.py" />
-        <option value="$PROJECT_DIR$/myfirstvis/views.py" />
-        <option value="$PROJECT_DIR$/myfirstvis/templates/demo.html" />
-        <option value="$PROJECT_DIR$/myfirstvis/templates/sentiment.html" />
-      </list>
-    </option>
+  <component name="ProjectId" id="1XIEDeq2Q62DABIYako2p2i431S" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="877" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="DrugProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DrugProject" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/myfirstvis/static/css" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/myfirstvis/templates" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/myfirstvis/static/css" />
-      <recent name="$PROJECT_DIR$/data" />
-      <recent name="$PROJECT_DIR$/myfirstvis/static/img" />
-      <recent name="$PROJECT_DIR$/myfirstvis/templates" />
-      <recent name="$PROJECT_DIR$/myfirstvis/static" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myfirstvis/static/login" />
       <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$/myfirstvis/static" />
       <recent name="$PROJECT_DIR$/myfirstvis/templates" />
       <recent name="$PROJECT_DIR$/myfirstvis/templates/myfirstvis" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myfirstvis/templates" />
+      <recent name="$PROJECT_DIR$/myfirstvis/static" />
+      <recent name="$PROJECT_DIR$/myfirstvis/static/AdminLTE" />
+      <recent name="$PROJECT_DIR$/myfirstvis/static/login/image" />
+      <recent name="$PROJECT_DIR$/myfirstvis/static/static/image" />
+    </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.spider">
+    <configuration name="spider" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DrugProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/news_extract" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/news_extract/spider.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DrugProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -277,11 +460,24 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.spider" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.word_cloud" />
         <item itemvalue="Python.train" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -305,7 +501,16 @@
       <workItem from="1562289554118" duration="54000" />
       <workItem from="1562828150961" duration="1478000" />
       <workItem from="1562860724062" duration="601000" />
-      <workItem from="1562898579763" duration="90000" />
+      <workItem from="1562898579763" duration="134000" />
+      <workItem from="1565002030885" duration="1240000" />
+      <workItem from="1565093252278" duration="780000" />
+      <workItem from="1567763001299" duration="17000" />
+      <workItem from="1567763030819" duration="628000" />
+      <workItem from="1567827024521" duration="2351000" />
+      <workItem from="1580725091139" duration="1884000" />
+      <workItem from="1580738718993" duration="25560000" />
+      <workItem from="1581048845865" duration="7166000" />
+      <workItem from="1581733899664" duration="6924000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0">
       <created>1561638246154</created>
@@ -342,348 +547,62 @@
       <option name="project" value="LOCAL" />
       <updated>1562828780199</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="v1.0">
+      <created>1562898868661</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1562898868661</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65245000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2811159" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2819277" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32900944" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32891566" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="SciView" order="5" weight="0.3297568" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="v1.0" />
     <option name="LAST_COMMIT_MESSAGE" value="v1.0" />
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/myechartsite$train.coverage" NAME="train Coverage Results" MODIFIED="1560760341126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sentiment_classify" />
-    <SUITE FILE_PATH="coverage/myechartsite$test.coverage" NAME="test Coverage Results" MODIFIED="1561124705865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/myechartsite$word_cloud.coverage" NAME="word_cloud Coverage Results" MODIFIED="1560853644199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/word_cloud" />
+  <component name="WindowStateProjectService">
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580985005895">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1580985005895" />
+    <state x="508" y="232" key="FileChooserDialogImpl" timestamp="1580725626184">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="508" y="232" key="FileChooserDialogImpl/0.0.1440.900@0.0.1440.900" timestamp="1580725626184" />
+    <state width="1398" height="244" key="GridCell.Tab.0.bottom" timestamp="1581130710568">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="244" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581130710568" />
+    <state width="1398" height="244" key="GridCell.Tab.0.center" timestamp="1581130710566">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="244" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581130710566" />
+    <state width="1398" height="244" key="GridCell.Tab.0.left" timestamp="1581130710565">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="244" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581130710565" />
+    <state width="1398" height="244" key="GridCell.Tab.0.right" timestamp="1581130710567">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="244" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581130710567" />
+    <state width="219" height="457" key="HiddenNamespacesPopup" timestamp="1581745455605">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="219" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1581745455605" />
+    <state x="229" y="89" key="SettingsEditor" timestamp="1580725641085">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="229" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1580725641085" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/myfirstvis/tests.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/models.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/apps.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/admin.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/static/js/echarts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="72" lean-forward="true" selection-start-line="29" selection-start-column="72" selection-end-line="29" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/pyecharts/charts/geo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/stopwords.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sentiment_classify/moiveRnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yufan.png" />
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/templates/myfirstvis/regiondistribution.html" />
-    <entry file="file://$PROJECT_DIR$/myfirstvis/templates/myfirstvis/pyecharts.html" />
-    <entry file="file://$PROJECT_DIR$/myechartsite/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#229#238#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_extract/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="125" selection-start-line="125" selection-end-line="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/django/utils/datastructures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myechartsite/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding>
-            <element signature="e#646#687#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="57" selection-start-line="5" selection-start-column="9" selection-end-line="6" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_extract/sina" />
-    <entry file="file://$PROJECT_DIR$/myechartsite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1639">
-          <caret line="122" column="37" selection-start-line="122" selection-start-column="37" selection-end-line="122" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/region.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/pyecharts/charts/bar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/pyecharts/chart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_extract/news_extract.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="63" column="37" lean-forward="true" selection-start-line="63" selection-start-column="37" selection-end-line="63" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Comments_all.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sentiment_classify/wordProcess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sentiment_classify/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sentiment_classify/classify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/drugs.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/static/js/classie.js" />
-    <entry file="file://$PROJECT_DIR$/output/zhendong_res.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/templates/index.html" />
-    <entry file="file://$PROJECT_DIR$/myfirstvis/templates/region_index.html" />
-    <entry file="file://$PROJECT_DIR$/data/zhendong_res.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/static/fonts/codropsicons/license.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/static/css/demo.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1049" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/templates/sentiment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="55" lean-forward="true" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#form#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/templates/region.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/templates/demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#4;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/news_extract/china_forbidden.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/word_cloud/word_cloud.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/templates/news.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" column="7" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#form#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2159">
-          <caret line="135" column="23" selection-start-line="135" selection-start-column="23" selection-end-line="135" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda3/lib/python3.6/site-packages/pandas/core/frame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52258">
-          <caret line="3168" column="8" selection-start-line="3168" selection-start-column="8" selection-end-line="3168" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myfirstvis/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/myechartsite$test.coverage" NAME="test Coverage Results" MODIFIED="1561124705865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/myechartsite$train.coverage" NAME="train Coverage Results" MODIFIED="1560760341126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sentiment_classify" />
+    <SUITE FILE_PATH="coverage/DrugProject$spider.coverage" NAME="spider Coverage Results" MODIFIED="1581062478651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/news_extract" />
+    <SUITE FILE_PATH="coverage/myechartsite$word_cloud.coverage" NAME="word_cloud Coverage Results" MODIFIED="1560853644199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/word_cloud" />
   </component>
 </project>

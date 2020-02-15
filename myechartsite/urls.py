@@ -18,5 +18,6 @@ from django.contrib import admin
 
 
 urlpatterns = [
-    url(r'drug/', include("myfirstvis.urls"))
+    url(r'drug/', include("myfirstvis.urls")),
+    url('admin/', admin.site.urls),
 ]
