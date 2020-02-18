@@ -5,11 +5,14 @@ from . import views
 
 urlpatterns = [
     url('index/', views.index),
+    url('analysis/', views.analysis),
+
     url('login/', views.login),
     url('register/', views.register),
     url('logout/', views.logout),
     url('captcha/', include('captcha.urls')),
 
+    url('crawl/', views.crawlNews),
     url(r'^region$', views.region, name='region'),
     url(r'^news$', views.news, name='news'),
     url(r'^sentiment$', views.sentiment, name='sentiment'),

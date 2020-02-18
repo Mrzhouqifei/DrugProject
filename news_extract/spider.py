@@ -2,6 +2,7 @@
 # !/bin/python3
 # chrome: /Users/lbc/Documents/python_project/Spider/chromed
 import re
+import os
 import csv
 import codecs
 from selenium import webdriver
@@ -9,13 +10,13 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+import pandas as pd
 from myfirstvis.models import News
 
-browser = webdriver.Chrome("/usr/local/bin/chromedriver")
-waiter = WebDriverWait(browser, 10)
 
 
-def Search(url, text):
+
+def Search(url, text, browser, waiter):
     # url="http://www.jindu626.com/"
     try:
         browser.get(url)
@@ -37,7 +38,7 @@ def Search(url, text):
         return Search(url, text)
 
 
-def is_element_exits(btn_text):
+def is_element_exits(btn_text, browser):
     try:
         status = browser.find_element_by_link_text(btn_text)
         if status is not None:
@@ -48,15 +49,15 @@ def is_element_exits(btn_text):
 
 
 # 跳转页面成功
-def next_page():
+def next_page(browser, waiter):
     try:
-        if is_element_exits("下一页"):
+        if is_element_exits("下一页", browser):
             next_btn = waiter.until(
                 ec.element_to_be_clickable((By.LINK_TEXT, "下一页"))
             )
             next_btn.click()
     except TimeoutError:
-        next_page()
+        next_page(browser, waiter)
 
 
 def page_count(items_count):
@@ -72,7 +73,7 @@ def page_count(items_count):
     return page_total
 
 
-def get_items(search_name):
+def get_items(action_par, drug_name_par, province, city, county, browser, waiter, date_max):
     waiter.until(ec.presence_of_element_located((By.CLASS_NAME, "mainM")))
     results = browser.find_elements_by_class_name("searchResults")
     data_page = list()
@@ -80,55 +81,111 @@ def get_items(search_name):
     for item in results:
         item_details = item.text.split("\n")  # item_details[0] is title
         url_time = item_details[len(item_details) - 1]
+
         if "http://" in str(url_time):
             url = re.findall(r"[a-zA-z]+://[^\s]*", url_time)[0]  # news_url
-            date = re.findall("([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|"
-                              "[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-"
-                              "(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))"
-                              "|((0[469]|11)-(0[1-9]|[12][0-9]|30))|"
-                              "(02-(0[1-9]|[1][0-9]|2[0-8])))", url_time)[0][0:2]
-
-            print(item_details[0] + "+" + url, "+" + date[0] + "-" + date[1])
-            # write_op.writerow([str(item_details[0]).encode('utf-8').decode('utf-8-sig'),url,date[0]+"-"+date[1]])
-            data_page.append([str(item_details[0]), url, date[0] + "-" + date[1]])
         else:
-            date = re.findall("([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|"
-                              "[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-"
-                              "(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))"
-                              "|((0[469]|11)-(0[1-9]|[12][0-9]|30))|"
-                              "(02-(0[1-9]|[1][0-9]|2[0-8])))", url_time)[0][0:2]
+            url = ''
+        date = re.findall("([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|"
+                          "[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-"
+                          "(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))"
+                          "|((0[469]|11)-(0[1-9]|[12][0-9]|30))|"
+                          "(02-(0[1-9]|[1][0-9]|2[0-8])))", url_time)[0][0:2]
+        theme = re.findall(r' - [\u4e00-\u9fa5]+', url_time)[0][3:]
 
-            print(item_details[0] + "+" + url, "+" + date[0] + "-" + date[1])
-            # write_op.writerow([str(item_details[0]).encode('utf-8').decode('utf-8-sig'),url,date[0]+"-"+date[1]])
-            data_page.append([str(item_details[0]), "none", date[0] + "-" + date[1]])
+        all_details = ''.join(item_details)
+        # 毒品名称匹配
+        drug = ''
+        name = list(set(drug_name_par.findall(all_details)))
+        if len(name) > 0:
+            drug = ','.join(name)
+        # 行为匹配
+        news_action = ''
+        action = list(set(action_par.findall(all_details)))
+        if len(action) > 0:
+            news_action = ','.join(action)
 
-    with codecs.open(search_name + ".csv", "a", "utf_8_sig") as f:
-        write_op = csv.writer(f)
-        write_op.writerows(data_page)
-    data_page.clear()
+        temp_province = []
+        temp_city = []
+        temp_county = []
+        for s in item_details:
+            # 市转换成省
+            for x in province:
+                if x in s:
+                    temp_province.append(x)
+            for x in city:
+                if x in s:
+                    temp_city.append(x)
+            for x in county:
+                if x in s:
+                    temp_county.append(x)
+        temp_province = ','.join(list(set(temp_province)))
+        temp_city = ','.join(list(set(temp_city)))
+        temp_county = ','.join(list(set(temp_county)))
 
+        # 标题，主题，内容，毒品，省，市，县，网址，日期
+        data_page.append([str(item_details[0]), theme, str(item_details[1]), drug,
+                          temp_province, temp_city, temp_county, url, date[0] + "-" + date[1], news_action])
+    count = 0
+    for x in data_page:
+        same_name_user = News.objects.filter(news_url=x[7])
+        if x[8] < str(date_max):
+            print(x[8], str(date_max))
+            count += 1
+        if not same_name_user:
+            print(x[0])
+            news = News()
+            news.news_title = x[0]
+            news.news_theme = x[1]
+            news.news_content = x[2]
+            news.news_drug = x[3]
+            news.news_province = x[4]
+            news.news_city = x[5]
+            news.news_county = x[6]
+            news.news_url = x[7]
+            news.news_date = x[8]
+            news.news_action = x[9]
+            news.save()
+        else:
+            print('该新闻已被抓取！')
+    if count == len(data_page):
+        return True
+    return False
 
-# def write_csv(search_name):
-#     with codecs.open(search_name + ".csv", "a", "utf_8_sig") as f:
-#         write_op = csv.writer(f)
-#         write_op.writerow(['news_title', 'news_url', 'news_date'])
-#         f.close()
-
+def city_drug_pattern():
+    area = pd.read_excel('data/全国省市区县行政区划明细及人口(2018最全版).xls').iloc[:, 1:4]
+    # path = os.getcwd() + '/../data/'
+    # area = pd.read_excel(path + '全国省市区县行政区划明细及人口(2018最全版).xls').iloc[:, 1:4]
+    area.columns = ['province', 'city', 'county']
+    province = list(set(area.province.str.replace('县|区|市|省|自治区|特别行政区|维吾尔|回族|壮族', '')))
+    city = list(set(area.city.str.replace('县|区|市|省|自治区|特别行政区|维吾尔|回族|壮族', '')))
+    county = list(set(area.county))
+    drug_name_par = re.compile('彩虹烟|笑气|蓝精灵|咔哇潮饮|紫水|海洛因|大麻|可卡因|冰毒|K粉|k粉|吗啡|'
+                               '摇头丸|麻谷|鸦片|各类毒品|各种毒品|卡痛叶|邮票|开心水|三唑仑|FIVE|止咳水|GHB|神仙水')
+    action_par = re.compile('藏毒|贩毒|缴获|戒毒|禁毒|破获|吸毒|运毒|制毒|抓获|走私')
+    return action_par, drug_name_par, province, city, county
 
 def main():
-    search_name = '禁毒'  # input("输入要搜索的内容：")
-    items_total = Search("http://www.jindu626.com/", search_name)
+    browser = webdriver.Chrome("/usr/local/bin/chromedriver")
+    waiter = WebDriverWait(browser, 10)
+    search_name = '毒'  # input("输入要搜索的内容：")
+    items_total = Search("http://www.jindu626.com/", search_name, browser, waiter)
     print("开始查找内容，爬去数据。")
     # get items number
     page_total = page_count(items_total)
-    # write_csv(search_name)
     page_index = 0
     page_counted = 0
-    while page_index < page_total - 1:
+    action_par, drug_name_par, province, city, county = city_drug_pattern()
+    flag = False
+    date_max = '2000-01-01'
+    dates = News.objects.values_list("news_date", flat=True)
+    if len(dates) > 0:
+        date_max = max(dates)
+    while (not flag) and page_index < page_total - 1:
         page_counted += 1
-        get_items(search_name)
+        flag = get_items(action_par, drug_name_par, province, city, county, browser, waiter, date_max)
 
-        next_page()
+        next_page(browser, waiter)
         page_index += 1
 
     print("page counted number:\t", page_counted)

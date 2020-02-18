@@ -20,14 +20,25 @@ class User(models.Model):
 
     class Meta:
         ordering = ["-c_time"]
-        verbose_name = "用户"
-        verbose_name_plural = "用户"
+        verbose_name = "用户表"
+        verbose_name_plural = "用户表"
 
 
 class News(models.Model):
-    news_title = models.CharField(max_length=256)
-    news_url = models.CharField(max_length=256)
-    news_date = models.DateField(null=True, blank=True, verbose_name="发布日期")
+    """
+    标题，主题，内容，毒品，省，市，县，网址，日期
+    province, city, county
+    """
+    news_title = models.CharField(max_length=128)
+    news_theme = models.CharField(max_length=128, default=' ')
+    news_content = models.CharField(max_length=512, default=' ')
+    news_drug = models.CharField(max_length=64, default=' ')
+    news_province = models.CharField(max_length=64, default=' ')
+    news_city = models.CharField(max_length=64, default=' ')
+    news_county = models.CharField(max_length=64, default=' ')
+    news_url = models.CharField(max_length=128)
+    news_date = models.DateField(max_length=64)
+    news_action = models.CharField(max_length=64, default=' ')
 
     class Meta:
         ordering = ["-news_date"]

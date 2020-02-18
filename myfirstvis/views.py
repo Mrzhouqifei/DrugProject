@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 import pandas as pd
 import re
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from pyecharts.charts import Geo, Map, Bar
 from pyecharts.globals import ThemeType
@@ -14,8 +14,9 @@ from django.shortcuts import redirect
 from . import models
 from . import forms
 import hashlib
-
-
+from news_extract.spider import main
+import datetime
+import json
 
 def hash_code(s, salt='mysite'):# 加点盐
     h = hashlib.sha256()
@@ -152,7 +153,65 @@ def demo(request):
 def index(request):
     if not request.session.get('is_login', None):
         return redirect('/drug/login/')
-    return render(request, 'index.html')
+    all_news = models.News.objects.all()
+    return render(request, 'index.html', locals())
+
+def analysis(request):
+    date_range = request.POST.get('date_range', '')
+
+    # theme = models.News.objects.values_list("news_theme", flat=True)
+    # theme_frame = pd.DataFrame(theme)
+    # theme_frame.to_csv('data/theme.csv')
+    # print(set(theme))
+
+    startdate = '2010-01-01'
+    enddate = str(datetime.date.today())
+    if len(date_range) > 0:
+        startdate = date_range[6:10] + '-' + date_range[0:2] + '-' + date_range[3:5]
+        enddate = date_range[6 + 22:10 + 22] + '-' + date_range[0 + 22:2 + 22] + '-' + date_range[3 + 22:5 + 22]
+    print(startdate, enddate)
+    drugs_temp = models.News.objects.filter(news_date__gt=startdate,
+                                            news_date__lte=enddate).values_list("news_drug", flat=True)
+    drugs_temp = pd.DataFrame(drugs_temp, columns=['num'])['num'].value_counts()
+    name = list(drugs_temp.index[1:])
+    num = list(drugs_temp[1:])
+    drug_dict = dict()
+    for i in range(len(name)):
+        xx = list(set(name[i].split(',')))
+        for x in xx:
+            if x == '各种毒品':
+                x = '各类毒品'
+            if x in drug_dict:
+                drug_dict[x] += num[i]
+            else:
+                drug_dict[x] = num[i]
+    # print(drug_dict)
+
+    bar = (
+        Bar(init_opts=opts.InitOpts(width="500px", height="400px"))# theme=ThemeType.CHALK
+            .add_xaxis(list(drug_dict.keys()))
+            .add_yaxis('数量', list(drug_dict.values()))
+            .set_series_opts(
+            label_opts=opts.LabelOpts(is_show=True),
+            markline_opts=opts.MarkLineOpts(
+                data=[
+                    opts.MarkLineItem(type_="average", name="平均值"),
+                ]
+            ),
+        )
+            .set_global_opts(#title_opts=opts.TitleOpts(title='毒品报道情况统计'),
+                             toolbox_opts=opts.ToolboxOpts(),
+                             xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=0)), )
+    )
+    context = dict(
+        drugbar=bar.render_embed(),
+    )
+    if len(date_range) > 0:
+        response = JsonResponse({"status": '服务器接收成功', 'drugbar': bar.render_embed(),})
+        return response
+    return render(request, 'analysis.html', context)
+    # return HttpResponse(template.render(context, request))
+
 
 def login(request):
     if request.session.get('is_login', None):  # 不允许重复登录
@@ -237,3 +296,13 @@ def logout(request):
     # del request.session['user_id']
     # del request.session['user_name']
     return redirect("/drug/login/")
+
+def crawlNews(request):
+    from threading import Thread
+    try:
+        print('爬取新数据')
+        t = Thread(target=main)
+        t.start()
+    except:
+        print('网站反爬更新！请修改爬虫！')
+    return redirect('/drug/index/')

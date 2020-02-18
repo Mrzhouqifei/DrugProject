@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}仪表盘{% endblock %}
+{% block css %}{% endblock %}
+
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        毒情分析
+        <small>dashboard</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">毒情分析</li>
+      </ol>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+
+  <!-- Main content 12-->
+    <section class="content">
+
+      <!-- Date and time range -->
+      <div class="box box-primary">
+            <div class="box-body">
+                {% csrf_token %}
+                <label>日期范围选择(默认全部数据):</label>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                      <input name="date_range" type="text" class="form-control pull-right" id="reservationtime">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary float-right" id="date">确认</button>
+                </div>
+                <!-- /.input group -->
+              <!-- /.form group -->
+            </div>
+      </div>
+
+<!--        <div class="row">-->
+<!--            &lt;!&ndash; row &ndash;&gt;-->
+<!--            <div class="col-md-12">-->
+<!--              &lt;!&ndash; jQuery Knob &ndash;&gt;-->
+<!--              <div class="box box-solid">-->
+<!--                <div class="box-header">-->
+<!--                  <i class="fa fa-bar-chart-o"></i>-->
+
+<!--                  <h3 class="box-title">设备状态<small>(%)</small></h3>-->
+
+<!--                  <div class="box-tools pull-right">-->
+<!--                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>-->
+<!--                    </button>-->
+<!--                    <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i>-->
+<!--                    </button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /.box-header &ndash;&gt;-->
+<!--                <div class="box-body">-->
+<!--                  <div class="row">-->
+
+<!--                    <div class="col-xs-6 col-md-2 col-md-offset-1 text-center">-->
+<!--                      <input type="text" class="knob" value="{{ up_rate }}" data-width="90" data-height="90" data-fgColor="#00a65a" data-readonly="true">-->
+
+<!--                      <div class="knob-label">在线</div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; ./col &ndash;&gt;-->
+<!--                    <div class="col-xs-6 col-md-2 text-center">-->
+<!--                      <input type="text" class="knob" value="{{ o_rate }}" data-width="90" data-height="90" data-fgColor="#f56954" data-readonly="true">-->
+
+<!--                      <div class="knob-label">下线</div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; ./col &ndash;&gt;-->
+
+<!--                    <div class="col-xs-6 col-md-2 text-center">-->
+<!--                      <input type="text" class="knob" value="{{ bd_rate }}" data-width="90" data-height="90" data-fgColor="#932ab6" data-readonly="true">-->
+
+<!--                      <div class="knob-label">故障</div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; ./col &ndash;&gt;-->
+<!--                    <div class="col-xs-6 col-md-2 text-center">-->
+<!--                      <input type="text" class="knob" value="{{ bu_rate }}" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-readonly="true">-->
+
+<!--                      <div class="knob-label">备用</div>-->
+<!--                    </div>-->
+
+<!--                      &lt;!&ndash; ./col &ndash;&gt;-->
+<!--                    <div class="col-xs-6 col-md-2 text-center">-->
+<!--                      <input type="text" class="knob" value="{{ un_rate }}" data-width="90" data-height="90" data-fgColor="#cccccc" data-readonly="true">-->
+
+<!--                      <div class="knob-label">未知</div>-->
+<!--                    </div>-->
+
+<!--                  </div>-->
+<!--                &lt;!&ndash; /.box-body &ndash;&gt;-->
+<!--                </div>-->
+<!--              &lt;!&ndash; /.box &ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash; /.col (RIGHT) &ndash;&gt;-->
+<!--            </div>-->
+          <!-- /.row -->
+
+        <div class="col-md-6">
+            <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">各毒品报道数量统计：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="drugbar">
+                {# 百度Echarts实现柱状图#}
+                {{drugbar|safe}}
+<!--                <div id="barChart" style="width: 600px;height:400px;"></div>-->
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">涉毒新闻主题类别饼状图：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+                {# 百度Echarts实现饼状图#}
+              <div id="donutChart" style="width: 600px;height:400px;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col (RIGHT) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+
+{% block script %}
+
+<script src="{% static 'adminlet-2.4.10/bower_components/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+<script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/jquery-knob/js/jquery.knob.js' %}"></script>
+<script>
+  var token = $('input[name=csrfmiddlewaretoken]').val();
+  $(function () {
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
+    $("#date").click(function () {
+    $.ajax({
+            type: "POST",   //提交的方法
+            url:"/drug/analysis/", //提交的地址
+            data: {csrfmiddlewaretoken: token, date_range: $("#reservationtime").val()},
+            // processData: false,
+            async: false,
+            // dataType: 'json',
+            error: function(request) {  //失败的话
+                 alert("Connection error");
+            },
+            success: function(data) {  //成功
+              // alert('分析结束！')
+              $("#drugbar").html(data.drugbar);
+                //  window.location.href="/drug/analysis/"
+            }
+         });
+       });
+  })
+</script>
+{% endblock %}
