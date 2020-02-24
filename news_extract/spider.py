@@ -12,6 +12,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 import pandas as pd
 from myfirstvis.models import News
+import datetime
+from statsmodels.tsa.arima_model import ARIMA
+
 
 
 
@@ -73,7 +76,8 @@ def page_count(items_count):
     return page_total
 
 
-def get_items(action_par, drug_name_par, province, city, county, browser, waiter, date_max):
+def get_items(action_par, drug_name_par, province, city, county, browser, waiter,
+              date_max, city2province_dict, county2province_dict):
     waiter.until(ec.presence_of_element_located((By.CLASS_NAME, "mainM")))
     results = browser.find_elements_by_class_name("searchResults")
     data_page = list()
@@ -105,20 +109,28 @@ def get_items(action_par, drug_name_par, province, city, county, browser, waiter
         if len(action) > 0:
             news_action = ','.join(action)
 
+        # 地区匹配
         temp_province = []
         temp_city = []
         temp_county = []
-        for s in item_details:
-            # 市转换成省
-            for x in province:
-                if x in s:
-                    temp_province.append(x)
-            for x in city:
-                if x in s:
-                    temp_city.append(x)
-            for x in county:
-                if x in s:
-                    temp_county.append(x)
+        for x in province:
+            if x in all_details:
+                temp_province.append(x)
+        for x in city:
+            if x in all_details:
+                temp_city.append(x)
+        for x in county:
+            if x in all_details:
+                temp_county.append(x)
+        # city, county --> province
+        for x in temp_city:
+            if x in city2province_dict:
+                temp_province.append(city2province_dict[x])
+        for x in temp_county:
+            if x in county2province_dict:
+                temp_province.append(county2province_dict[x])
+        temp_province = list(set(temp_province))
+
         temp_province = ','.join(list(set(temp_province)))
         temp_city = ','.join(list(set(temp_city)))
         temp_county = ','.join(list(set(temp_county)))
@@ -157,13 +169,24 @@ def city_drug_pattern():
     # path = os.getcwd() + '/../data/'
     # area = pd.read_excel(path + '全国省市区县行政区划明细及人口(2018最全版).xls').iloc[:, 1:4]
     area.columns = ['province', 'city', 'county']
-    province = list(set(area.province.str.replace('县|区|市|省|自治区|特别行政区|维吾尔|回族|壮族', '')))
-    city = list(set(area.city.str.replace('县|区|市|省|自治区|特别行政区|维吾尔|回族|壮族', '')))
+    area.province = area.province.str.replace('县|区|市|省|自治区|特别行政区|维吾尔|回族|壮族', '')
+    area.city = area.city.str.replace('县|区|市|省|自治区|特别行政区|维吾尔|回族|壮族', '')
+    province = list(set(area.province))
+    city = list(set(area.city))
     county = list(set(area.county))
     drug_name_par = re.compile('彩虹烟|笑气|蓝精灵|咔哇潮饮|紫水|海洛因|大麻|可卡因|冰毒|K粉|k粉|吗啡|'
                                '摇头丸|麻谷|鸦片|各类毒品|各种毒品|卡痛叶|邮票|开心水|三唑仑|FIVE|止咳水|GHB|神仙水')
     action_par = re.compile('藏毒|贩毒|缴获|戒毒|禁毒|破获|吸毒|运毒|制毒|抓获|走私')
-    return action_par, drug_name_par, province, city, county
+
+    city2province_dict = dict()
+    county2province_dict = dict()
+    for i in range(len(area)):
+        if area.city[i] not in city2province_dict:
+            city2province_dict[area.city[i]] = area.province[i]
+        if area.county[i] not in county2province_dict:
+            county2province_dict[area.county[i]] = area.province[i]
+
+    return action_par, drug_name_par, province, city, county, city2province_dict, county2province_dict
 
 def main():
     browser = webdriver.Chrome("/usr/local/bin/chromedriver")
@@ -175,7 +198,7 @@ def main():
     page_total = page_count(items_total)
     page_index = 0
     page_counted = 0
-    action_par, drug_name_par, province, city, county = city_drug_pattern()
+    action_par, drug_name_par, province, city, county, city2province_dict, county2province_dict = city_drug_pattern()
     flag = False
     date_max = '2000-01-01'
     dates = News.objects.values_list("news_date", flat=True)
@@ -183,12 +206,42 @@ def main():
         date_max = max(dates)
     while (not flag) and page_index < page_total - 1:
         page_counted += 1
-        flag = get_items(action_par, drug_name_par, province, city, county, browser, waiter, date_max)
+        flag = get_items(action_par, drug_name_par, province, city, county, browser, waiter,
+                         date_max, city2province_dict, county2province_dict)
 
         next_page(browser, waiter)
         page_index += 1
 
     print("page counted number:\t", page_counted)
+
+    date = News.objects.values_list("news_date", flat=True)
+    date = pd.to_datetime(pd.Series(date))
+    date = date.dt.strftime('%Y-%m')
+    date = date[date > '2015-06']
+    date = date.value_counts().sort_index()
+    # -----------------------region1 begin------------------------
+    model = ARIMA(date, order=(12, 1, 0))
+    model_fit = model.fit(disp=0)
+    pred1 = model_fit.forecast(6)
+    x = list(date.index)
+    temp = max(x)
+    y = list(date)
+    y_pred = list()
+    for i in range(len(y) - 1):
+        y_pred.append('')
+    y_pred.append(y[-1])
+    for t in pred1[0]:
+        y_pred.append(int(t))
+    for i in range(1, 7):
+        temp = datetime.datetime.strptime(temp, '%Y-%m') + datetime.timedelta(days=31)
+        temp = datetime.datetime.strftime(temp, '%Y-%m')
+        x.append(temp)
+        y.append('')
+    res = pd.DataFrame()
+    res['x']=x
+    res['y']=y
+    res['y_pred']=y_pred
+    res.to_csv('data/regression.csv', index=False)
 
 
 if __name__ == "__main__":

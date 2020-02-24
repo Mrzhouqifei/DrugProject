@@ -1,57 +1,235 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Off-Canvas Menu Effects - Top Side</title>
+{% extends 'base.html' %}
+{% load static %}
 
-<link rel="stylesheet" type="text/css" href="/static/css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="/static/css/demo.css" />
+{% block title %}毒情分析{% endblock %}
+{% block css %}{% endblock %}
 
-<!--必要样式-->
-<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="/static/css/menu_topside.css" />
-<!--[if IE]>
-<script src="/static/js/html5.js"></script>
-<![endif]-->
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        舆论情感
+        <small>以某公众人物吸毒舆论为例（基于微博80万评论数据）</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/drug/"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">舆论情感</li>
+      </ol>
+    </section>
+{% endblock %}
 
-<!--<link rel="stylesheet" href="/static/css/bootstrap.min.css" />-->
-<link rel="stylesheet" href="/static/css/app.css" />
-{% for jsfile_name in script_list %}
-    <script src="{{host}}/{{jsfile_name}}.js"></script>
-{% endfor %}
-<style>
-    .div-inline{float: left}
-    .boxes{color: rgba(212, 215, 229, 0.8);}
-</style>
-</head>
-<body class="bg04">
-    <header class="header">
-        <h3>毒情评估系统</h3>
-    </header>
-    <div>
-        <div class="div-inline">
-            <nav class="menu-side" style="width: 300px">
-                <a href="news">新闻提取</a>
-                <a href="region">毒情展示</a>
-                <a href="sentiment">情感分类</a>
-                <a href="demo">涉毒舆情实例</a>
-		    </nav>
-        </div>
-        <div class="div-inline" align="center">
-            <div align="center" style="color:#85ff58">
-                <form action="/drug/sentiment" method="post">
-                    {%csrf_token%}
-                    <h4>待分类评论：</h4>
-                    <textarea class="boxes" type="text" rows="15" cols="120" name="comments" style="background:transparent">{{comments}}</textarea>
-                    <br>
-                    <input type="submit" value="智能评估" style="background:rgba(253,251,239,0.73);">
-                </form>
-                <h4>基于深度学习的情绪分类结果:</h4>
-                <textarea class="boxes" type="text" rows="15" cols="50" style="background:transparent">{{display}}</textarea>
+{% block content %}
+
+
+  <!-- Main content 12-->
+    <section class="content">
+
+      <div class="row">
+        <div class="col-md-6">
+          <!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">全部微博评论词云：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
             </div>
+            <div class="box-body" id="themepie">
+                {# 百度Echarts实现饼状图#}
+                {{themepie|safe}}
+<!--              <div style="width: 600px;height:250px;"></div>-->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-    </div>
-</body>
-</html>
+        <!-- /.col (RIGHT) -->
+        <div class="col-md-6">
+          <!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">情感偏向统计：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="actionpie">
+                {{actionpie|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col (RIGHT) -->
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-6">
+            <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">14年微博评论词云：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="drugbar">
+                {{drugbar|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+
+        <div class="col-md-6">
+            <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">15年微博评论词云：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="wordcloud">
+                {{wordcloud|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+            <!-- BAR CHART -->
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">16年微博评论词云：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="drugbar">
+                {{drugbar|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+
+        <div class="col-md-6">
+            <!-- BAR CHART -->
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">17年微博评论词云：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="wordcloud">
+                {{wordcloud|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+            <!-- BAR CHART -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">18年微博评论词云：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="drugbar">
+                {{drugbar|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+
+        <div class="col-md-6">
+            <!-- BAR CHART -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">19年微博评论词云：</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="wordcloud">
+                {{wordcloud|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+
+      </div>
+<!--      </div>-->
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+
+{% block script %}
+
+<script src="{% static 'adminlet-2.4.10/bower_components/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+<script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/jquery-knob/js/jquery.knob.js' %}"></script>
+<script>
+  var token = $('input[name=csrfmiddlewaretoken]').val();
+  $(function () {
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
+    $("#date").click(function () {
+    $.ajax({
+            type: "POST",   //提交的方法
+            url:"/drug/analysis/", //提交的地址
+            data: {csrfmiddlewaretoken: token, date_range: $("#reservationtime").val()},
+            // processData: false,
+            async: false,
+            // dataType: 'json',
+            error: function(request) {  //失败的话
+                 alert("Connection error");
+            },
+            success: function(data) {  //成功
+              // alert('分析结束！')
+              $("#themepie").html(data.themepie);
+              $("#actionpie").html(data.actionpie);
+              $("#drugbar").html(data.drugbar);
+              $("#wordcloud").html(data.drugbar);
+                //  window.location.href="/drug/analysis/"
+            }
+         });
+       });
+  })
+</script>
+{% endblock %}

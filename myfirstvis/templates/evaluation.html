@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}涉毒新闻{% endblock %}
+
+{% block css %}
+     <link rel="stylesheet" href="{% static 'adminlet-2.4.10/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
+{% endblock %}
+
+{% block breadcrumb %}
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        绩效评估
+<!--        <small>assets list</small>-->
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/drug/"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">绩效评估</li>
+      </ol>
+    </section>
+{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+   <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="box">
+        <div class="box-header">
+            <div class="form-group">
+                <label>绩效评估年份：(百分制评分)</label>
+                <button type="button" onclick="update_date()" class="btn btn-primary float-right">确认时间</button>
+<!--                <div class="col-xs-3">-->
+                  <select class="form-control" id="date">
+                      {% for option in date_options %}
+                        <option>{{option}}</option>
+                      {% empty %}
+                        <option>没有选项</option>
+                      {% endfor %}
+                  </select>
+<!--                </div>-->
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+
+            <table id="assets_table" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>地区</th>
+                        <th>宣传教育绩效</th>
+                        <th>缉毒戒毒绩效</th>
+                        <th>宣传教育增长性绩效</th>
+                        <th>缉毒戒毒增长性绩效</th>
+                        <th>总绩效</th>
+                    </tr>
+                </thead>
+                <tbody id="tabletext">
+                {% for ranks in ranks_list %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ ranks.key }}</td>
+                        <td>{{ ranks.action }}</td>
+                        <td>{{ ranks.publicize }}</td>
+                        <td>{{ ranks.last_action }}</td>
+                        <td>{{ ranks.last_publicize }}</td>
+                        <td>{{ ranks.all }}</td>
+                    </tr>
+                {% empty %}
+                <tr>没有数据</tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+        </div>
+    <!-- /.col -->
+      </div>
+    <!-- /.row -->
+    </section>
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'adminlet-2.4.10/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+<script>
+    var token = $('input[name=csrfmiddlewaretoken]').val();
+    // $(function () {
+    //         $('#assets_table').DataTable({
+    //           "paging": true,       <!-- 允许分页 -->
+    //           "lengthChange": true, <!-- 允许改变每页显示的行数 -->
+    //           "searching": true,    <!-- 允许内容搜索 -->
+    //           "ordering": true,     <!-- 允许排序 -->
+    //           "info": true,         <!-- 显示信息 --> <!-- 固定宽度 -->
+    //           "autoWidth": false
+    //         });
+    // });
+    function update_date() {
+        $.ajax({
+                type: "POST",   //提交的方法
+                url:"/drug/evaluation/", //提交的地址
+                data: {csrfmiddlewaretoken: token, date: $("#date").val()},
+                // processData: false,
+                async: false,
+                dataType: 'json',
+                error: function(request) {  //失败的话
+                     alert("Connection error");
+                },
+                success: function(data) {  //成功
+                    var total = data.total;
+                    var rows = data.rows;
+                    var str = "";//把数据组装起来
+                        for (var i = 0; i < total; i++) {
+                            str += "<tr><td>" + (i+1) +
+                                "</td><td>" + rows[i].key +
+                                "</td><td>" + rows[i].action +
+                                "</td><td>" + rows[i].publicize +
+                                "</td><td>" + rows[i].last_action +
+                                "</td><td>" + rows[i].last_publicize +
+                                "</td><td>" + rows[i].all + "</td></tr>";
+                        }
+                    $("#tabletext").html(str);
+                }
+             });
+       }
+</script>
+{% endblock %}

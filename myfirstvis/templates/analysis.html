@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}仪表盘{% endblock %}
+{% block title %}毒情分析{% endblock %}
 {% block css %}{% endblock %}
 
 {% block breadcrumb %}
@@ -9,10 +9,10 @@
     <section class="content-header">
       <h1>
         毒情分析
-        <small>dashboard</small>
+<!--        <small>dashboard</small>-->
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li><a href="/drug/"><i class="fa fa-dashboard"></i> 主页</a></li>
         <li class="active">毒情分析</li>
       </ol>
     </section>
@@ -108,12 +108,58 @@
 <!--            &lt;!&ndash; /.col (RIGHT) &ndash;&gt;-->
 <!--            </div>-->
           <!-- /.row -->
+      <div class="row">
+        <div class="col-md-6">
+          <!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">涉毒新闻主题类别饼状图:</h3>
 
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="themepie">
+                {# 百度Echarts实现饼状图#}
+                {{themepie|safe}}
+<!--              <div style="width: 600px;height:250px;"></div>-->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col (RIGHT) -->
+        <div class="col-md-6">
+          <!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">涉毒行为饼状图:</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="actionpie">
+                {{actionpie|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col (RIGHT) -->
+      </div>
+
+
+      <div class="row">
         <div class="col-md-6">
             <!-- BAR CHART -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">各毒品报道数量统计：</h3>
+              <h3 class="box-title">各毒品报道数量统计:</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -122,20 +168,17 @@
               </div>
             </div>
             <div class="box-body" id="drugbar">
-                {# 百度Echarts实现柱状图#}
                 {{drugbar|safe}}
-<!--                <div id="barChart" style="width: 600px;height:400px;"></div>-->
             </div>
             <!-- /.box-body -->
           </div>
         </div>
 
-
         <div class="col-md-6">
-          <!-- DONUT CHART -->
-          <div class="box box-danger">
+            <!-- BAR CHART -->
+          <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">涉毒新闻主题类别饼状图：</h3>
+              <h3 class="box-title">新闻词云图:</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -143,16 +186,15 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body">
-                {# 百度Echarts实现饼状图#}
-              <div id="donutChart" style="width: 600px;height:400px;"></div>
+            <div class="box-body" id="wordcloud">
+                {{wordcloud|safe}}
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col (RIGHT) -->
+
       </div>
+<!--      </div>-->
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -182,7 +224,10 @@
             },
             success: function(data) {  //成功
               // alert('分析结束！')
+              $("#themepie").html(data.themepie);
+              $("#actionpie").html(data.actionpie);
               $("#drugbar").html(data.drugbar);
+              $("#wordcloud").html(data.drugbar);
                 //  window.location.href="/drug/analysis/"
             }
          });

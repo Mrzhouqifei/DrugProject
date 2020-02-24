@@ -1,102 +1,16 @@
 from __future__ import unicode_literals
-import pandas as pd
-import re
-from django.http import HttpResponse, JsonResponse
-from django.template import loader
-from pyecharts.charts import Geo, Map, Bar
-from pyecharts.globals import ThemeType
-from pyecharts import options as opts
-from news_extract.news_extract import extract
-from sentiment_classify.classify import predict
-import numpy as np
-from django.shortcuts import render
-from django.shortcuts import redirect
-from . import models
-from . import forms
-import hashlib
-from news_extract.spider import main
 import datetime
+import pandas as pd
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect
+from django.shortcuts import render
+from django.template import loader
+from myfirstvis.chart import *
+from news_extract.spider import main
+from sentiment_classify.classify import predict
+from . import forms
+from . import models
 import json
-
-def hash_code(s, salt='mysite'):# 加点盐
-    h = hashlib.sha256()
-    s += salt
-    h.update(s.encode())  # update方法只接收bytes类型
-    return h.hexdigest()
-
-# REMOTE_HOST = "https://pyecharts.github.io/assets/js"
-
-
-def region(request):
-    """
-    毒品形势中国区域分布
-    :param request:
-    :return:
-    """
-    template = loader.get_template('region.html')
-    region = pd.read_csv('data/region.csv')
-    max_count = np.mean(region.num) + 3 * np.std(region.num)
-    #[("海门", 9), ("鄂尔多斯", 12), ("大庆", 279)]
-    cmap = (
-        Map(init_opts=opts.InitOpts(width="1100px", height="550px", theme=ThemeType.CHALK))
-        .add("涉毒数目", [list(z) for z in zip(list(region.city), list(region.num))], "china")
-        .set_global_opts(
-            title_opts=opts.TitleOpts(title="中国毒情区域分布", subtitle='数据主要来源于:中国禁毒网|禁毒在线|新浪新闻'),
-            visualmap_opts=opts.VisualMapOpts(max_=max_count, textstyle_opts=opts.TextStyleOpts(color='#fff')),
-            toolbox_opts=opts.ToolboxOpts(),
-        )
-    )
-
-    drugs = pd.read_csv('data/drugs.csv')
-    bar = (
-        Bar(init_opts=opts.InitOpts(width="700px", height="350px", theme=ThemeType.CHALK))
-        .add_xaxis(list(drugs.drug))
-        .add_yaxis('数量', list(drugs.num))
-        .set_series_opts(
-            label_opts=opts.LabelOpts(is_show=True),
-            markline_opts=opts.MarkLineOpts(
-                data=[
-                    opts.MarkLineItem(type_="average", name="平均值"),
-                ]
-            ),
-        )
-        .set_global_opts(title_opts=opts.TitleOpts(title='毒品报道情况统计'),
-                         toolbox_opts=opts.ToolboxOpts(),
-                         xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=0)),)
-    )
-
-    context = dict(
-        mymap=cmap.render_embed(),
-        mybar=bar.render_embed(),
-    )
-    return HttpResponse(template.render(context, request))
-
-
-def news(request):
-    """
-    毒品形势中国区域分布
-    :param request:
-    :return:
-    """
-    template = loader.get_template('news.html')
-    context = dict()
-    if request.method == 'POST':
-        if request.POST:
-            urls = request.POST.get('urls', '').split()
-            sel_year = int(request.POST.get('sel_year', ''))
-            news_sum, news_items = extract(urls, sel_year)
-            single_res = []
-            for news_item in news_items:
-                news_item = str(news_item)
-                news_item = re.sub('[{}\'[\]]', '', news_item)
-                single_res.append(news_item)
-            context['news_items'] = single_res
-
-            news_sum = str(news_sum)
-            news_sum = re.sub('[{}\']', '', news_sum)
-            news_sum = news_sum.replace(',', '\n')
-            context['news_sum'] = news_sum
-    return HttpResponse(template.render(context, request))
 
 
 def sentiment(request):
@@ -150,68 +64,6 @@ def demo(request):
     context['zhendong18'] = zhendong18
     return HttpResponse(template.render(context, request))
 
-def index(request):
-    if not request.session.get('is_login', None):
-        return redirect('/drug/login/')
-    all_news = models.News.objects.all()
-    return render(request, 'index.html', locals())
-
-def analysis(request):
-    date_range = request.POST.get('date_range', '')
-
-    # theme = models.News.objects.values_list("news_theme", flat=True)
-    # theme_frame = pd.DataFrame(theme)
-    # theme_frame.to_csv('data/theme.csv')
-    # print(set(theme))
-
-    startdate = '2010-01-01'
-    enddate = str(datetime.date.today())
-    if len(date_range) > 0:
-        startdate = date_range[6:10] + '-' + date_range[0:2] + '-' + date_range[3:5]
-        enddate = date_range[6 + 22:10 + 22] + '-' + date_range[0 + 22:2 + 22] + '-' + date_range[3 + 22:5 + 22]
-    print(startdate, enddate)
-    drugs_temp = models.News.objects.filter(news_date__gt=startdate,
-                                            news_date__lte=enddate).values_list("news_drug", flat=True)
-    drugs_temp = pd.DataFrame(drugs_temp, columns=['num'])['num'].value_counts()
-    name = list(drugs_temp.index[1:])
-    num = list(drugs_temp[1:])
-    drug_dict = dict()
-    for i in range(len(name)):
-        xx = list(set(name[i].split(',')))
-        for x in xx:
-            if x == '各种毒品':
-                x = '各类毒品'
-            if x in drug_dict:
-                drug_dict[x] += num[i]
-            else:
-                drug_dict[x] = num[i]
-    # print(drug_dict)
-
-    bar = (
-        Bar(init_opts=opts.InitOpts(width="500px", height="400px"))# theme=ThemeType.CHALK
-            .add_xaxis(list(drug_dict.keys()))
-            .add_yaxis('数量', list(drug_dict.values()))
-            .set_series_opts(
-            label_opts=opts.LabelOpts(is_show=True),
-            markline_opts=opts.MarkLineOpts(
-                data=[
-                    opts.MarkLineItem(type_="average", name="平均值"),
-                ]
-            ),
-        )
-            .set_global_opts(#title_opts=opts.TitleOpts(title='毒品报道情况统计'),
-                             toolbox_opts=opts.ToolboxOpts(),
-                             xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=0)), )
-    )
-    context = dict(
-        drugbar=bar.render_embed(),
-    )
-    if len(date_range) > 0:
-        response = JsonResponse({"status": '服务器接收成功', 'drugbar': bar.render_embed(),})
-        return response
-    return render(request, 'analysis.html', context)
-    # return HttpResponse(template.render(context, request))
-
 
 def login(request):
     if request.session.get('is_login', None):  # 不允许重复登录
@@ -225,15 +77,17 @@ def login(request):
 
             try:
                 user = models.User.objects.get(name=username)
-            except :
+            except:
                 message = '用户不存在！'
                 return render(request, 'login/login.html', locals())
 
             if user.password == hash_code(password):
                 request.session['is_login'] = True
-                request.session['user_id'] = user.id
+                # request.session['user_id'] = user.id
                 request.session['user_name'] = user.name
                 request.session['c_time'] = str(user.c_time)[0:10]
+                request.session['user_email'] = user.email
+                # request.session['user_sex'] = user.sex
                 return redirect('/drug/index/')
             else:
                 message = '密码不正确！'
@@ -306,3 +160,310 @@ def crawlNews(request):
     except:
         print('网站反爬更新！请修改爬虫！')
     return redirect('/drug/index/')
+
+
+def index(request):
+    if not request.session.get('is_login', None):
+        return redirect('/drug/login/')
+    # all_news = models.News.objects.all()
+    all_news = models.News.objects.only('news_title', 'news_url', 'news_date')
+
+    data = pd.read_csv('data/regression.csv')
+    x, y, y_pred = list(data.x), list(data.y), list(data.y_pred)
+    regression1 = line_smooth(x, y, y_pred)
+    return render(request, 'index.html', locals())
+
+
+def analysis(request):
+    date_range = request.POST.get('date_range', '')
+    startdate = '2010-01-01'
+    enddate = str(datetime.date.today())
+    if len(date_range) > 0:
+        startdate = date_range[6:10] + '-' + date_range[0:2] + '-' + date_range[3:5]
+        enddate = date_range[6 + 22:10 + 22] + '-' + date_range[0 + 22:2 + 22] + '-' + date_range[3 + 22:5 + 22]
+    print(startdate, enddate)
+
+    # ---------------------theme begin-----------------------
+    province = ['北京', '天津', '上海', '重庆', '河北', '山西', '辽宁', '吉林', '黑龙江', '江苏', '浙江', '安徽',
+                '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '海南', '四川', '贵州', '云南', '陕西', '甘肃',
+                '青海', '台湾', '内蒙古', '广西', '西藏', '宁夏', '新疆', '香港', '澳门']
+    theme = models.News.objects.filter(news_date__gt=startdate,
+                                       news_date__lte=enddate).values_list("news_theme", flat=True)
+    theme_temp = pd.DataFrame(theme, columns=['num'])['num'].value_counts()
+    themes = set(theme_temp.index).difference(set(province))
+    theme_list = []
+    theme_num = []
+    for i, x in enumerate(theme_temp.index):
+        if x in themes:
+            theme_list.append(x)
+            theme_num.append(theme_temp[i])
+    theme_last = theme_list[0:12]
+    theme_last.append('其他')
+    num_last = theme_num[0:12]
+    num_last.append(sum(theme_num[12:]))
+    themepie = pie_(theme_last, num_last)
+    # ---------------------theme end-------------------------
+
+    # ---------------------action begin----------------------
+    action_temp = models.News.objects.filter(news_date__gt=startdate,
+                                             news_date__lte=enddate).values_list("news_action", flat=True)
+    action_temp = pd.DataFrame(action_temp, columns=['num'])['num'].value_counts()
+    action = list(action_temp.index)
+    num = list(action_temp)
+    action_dict = dict()
+    for i in range(len(action)):
+        xx = list(set(action[i].split(',')))
+        for x in xx:
+            if x == '':
+                continue
+            if x in action_dict:
+                action_dict[x] += num[i]
+            else:
+                action_dict[x] = num[i]
+    actionpie = pie_(list(action_dict.keys()), list(action_dict.values()))
+    # ---------------------action end------------------------
+
+    # ---------------------drug begin-----------------------
+    drugs_temp = models.News.objects.filter(news_date__gt=startdate,
+                                            news_date__lte=enddate).values_list("news_drug", flat=True)
+    drugs_temp = pd.DataFrame(drugs_temp, columns=['num'])['num'].value_counts()
+    drugs_temp = drugs_temp[drugs_temp.index != '']
+    name = list(drugs_temp.index)  # [1:]
+    num = list(drugs_temp)
+    drug_dict = dict()
+    for i in range(len(name)):
+        xx = list(set(name[i].split(',')))
+        for x in xx:
+            if x == '各种毒品':
+                x = '各类毒品'
+            if x in drug_dict:
+                drug_dict[x] += num[i]
+            else:
+                drug_dict[x] = num[i]
+    drugbar = bar_(list(drug_dict.keys()), list(drug_dict.values()))
+    # -----------------------drug end--------------------------
+
+    # -----------------------word begin------------------------
+    word_temp = models.News.objects.filter(news_date__gt=startdate,  # news_title news_content
+                                           news_date__lte=enddate).values_list("news_title", flat=True)
+    wordcloud = wordcloud_diamond(wordCount(word_temp))
+    # -----------------------word end--------------------------
+
+    context = dict(
+        drugbar=drugbar,
+        themepie=themepie,
+        actionpie=actionpie,
+        wordcloud=wordcloud,
+    )
+    if len(date_range) > 0:
+        response = JsonResponse({"status": '服务器接收成功', 'themepie': themepie, 'actionpie': actionpie,
+                                 'drugbar': drugbar, 'wordcloud': wordcloud})
+        return response
+    return render(request, 'analysis.html', context)
+
+
+def region(request):
+    """
+    毒品形势中国区域分布
+    :param request:
+    :return:
+    """
+    date_range = request.POST.get('date_range', '')
+    startdate = '2010-01-01'
+    enddate = str(datetime.date.today())
+    if len(date_range) > 0:
+        startdate = date_range[6:10] + '-' + date_range[0:2] + '-' + date_range[3:5]
+        enddate = date_range[6 + 22:10 + 22] + '-' + date_range[0 + 22:2 + 22] + '-' + date_range[3 + 22:5 + 22]
+    print(startdate, enddate)
+
+    theme = models.News.objects.filter(news_date__gt=startdate,
+                                       news_date__lte=enddate).values_list("news_theme", flat=True)
+    province = models.News.objects.filter(news_date__gt=startdate,
+                                          news_date__lte=enddate).values_list("news_province", flat=True)
+    theme = pd.Series(theme)
+    theme = list((theme == '缉毒破案') | (theme == '曝光台'))
+
+    # -----------------------region1 begin------------------------
+    res_all = []
+    for i in range(len(province)):
+        temp1 = province[i].split(',')
+        for x in temp1:
+            res_all.append(x)
+    res_all = pd.DataFrame(res_all, columns=['num'])['num'].value_counts()
+    res_all = res_all[res_all.index != '']
+    res_name = list(res_all.index)
+    num = list(res_all)
+    region1 = map_(res_name, num)
+
+    # -----------------------region2 begin------------------------
+    res_all = []
+    for i in range(len(province)):
+        if not theme[i]:
+            temp1 = province[i].split(',')
+            for x in temp1:
+                res_all.append(x)
+    res_all = pd.DataFrame(res_all, columns=['num'])['num'].value_counts()
+    res_all = res_all[res_all.index != '']
+    res_name = list(res_all.index)
+    num = list(res_all)
+    region2 = map_(res_name, num)
+
+    # -----------------------region3 begin------------------------
+    res_all = []
+    for i in range(len(province)):
+        if theme[i]:
+            temp1 = province[i].split(',')
+            for x in temp1:
+                res_all.append(x)
+    res_all = pd.DataFrame(res_all, columns=['num'])['num'].value_counts()
+    res_all = res_all[res_all.index != '']
+    res_name = list(res_all.index)
+    num = list(res_all)
+    region3 = map_(res_name, num)
+
+    context = dict(
+        region1=region1,
+        region2=region2,
+        region3=region3,
+    )
+    if len(date_range) > 0:
+        response = JsonResponse({"status": '服务器接收成功', 'region1': region1, 'region2': region2,
+                                 'region3': region3})
+        return response
+    return render(request, 'region.html', context)
+
+
+def evaluation(request):
+    last_startdate, startdate, enddate = '2017-12-31', '2018-12-31', '2019-12-31'
+    request_date = request.POST.get('date', '')
+    if len(request_date) > 0:
+        last_startdate, startdate, enddate = str(int(request_date[:4])-1)+'-12-31', request_date[:10], request_date[11:]
+    date = models.News.objects.values_list("news_date", flat=True)
+    date = pd.to_datetime(pd.Series(date))
+    date = date.dt.strftime('%Y')
+    date = sorted(list(set(date[date >= '2015'])), reverse=True)
+    date_options = []
+    for x in date[1:]:
+        date_options.append(str(int(x)-1)+'-12-31~'+x+'-12-31')
+
+    province_name = ['北京', '天津', '上海', '重庆', '河北', '山西', '辽宁', '吉林', '黑龙江', '江苏', '浙江', '安徽',
+                     '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '海南', '四川', '贵州', '云南', '陕西', '甘肃',
+                     '青海', '台湾', '内蒙古', '广西', '西藏', '宁夏', '新疆', '香港', '澳门']
+
+    all_dict, action_dict, publicize_dict, last_action_dict, last_publicize_dict = dict(), dict(), dict(), dict(), dict()
+    for x in province_name:
+        all_dict[x], action_dict[x], publicize_dict[x], last_action_dict[x], last_publicize_dict[x] = 50, 50, 50, 50, 50
+
+    theme = models.News.objects.filter(news_date__gt=startdate,
+                                       news_date__lte=enddate).values_list("news_theme", flat=True)
+    province = models.News.objects.filter(news_date__gt=startdate,
+                                          news_date__lte=enddate).values_list("news_province", flat=True)
+    last_theme = models.News.objects.filter(news_date__gt=last_startdate,
+                                            news_date__lte=startdate).values_list("news_theme", flat=True)
+    last_province = models.News.objects.filter(news_date__gt=last_startdate,
+                                               news_date__lte=startdate).values_list("news_province", flat=True)
+
+    theme = pd.Series(theme)
+    action = np.array((theme == '缉毒破案') | (theme == '曝光台') | (theme == '戒毒工作') |
+                      (theme == '社区康复') | (theme == '禁毒人物') | (theme == '深度追踪') | (theme == '深度报道'))
+
+    last_theme = pd.Series(last_theme)
+    last_action = np.array((last_theme == '缉毒破案') | (last_theme == '曝光台') | (last_theme == '戒毒工作') |
+                           (last_theme == '社区康复') | (last_theme == '禁毒人物') | (last_theme == '深度追踪') |
+                           (last_theme == '深度报道'))
+
+    res_action = []
+    res_publicize = []
+    for i in range(len(province)):
+        temp1 = province[i].split(',')
+        if action[i]:
+            for x in temp1:
+                res_action.append(x)
+        else:
+            for x in temp1:
+                res_publicize.append(x)
+    res_action = pd.DataFrame(res_action, columns=['num'])['num'].value_counts()
+    res_action = res_action[res_action.index != '']
+    res_action = (rank(res_action) + 1) / 2
+    for i in range(len(res_action)):
+        action_dict[res_action.index[i]] = int(res_action.iloc[i] * 100)
+
+    res_publicize = pd.DataFrame(res_publicize, columns=['num'])['num'].value_counts()
+    res_publicize = res_publicize[res_publicize.index != '']
+    res_publicize = (rank(res_publicize) + 1) / 2
+    for i in range(len(res_publicize)):
+        publicize_dict[res_publicize.index[i]] = int(res_publicize.iloc[i] * 100)
+    # -------last--------
+    las_res_action = []
+    last_res_publicize = []
+    for i in range(len(last_province)):
+        temp1 = last_province[i].split(',')
+        if last_action[i]:
+            for x in temp1:
+                las_res_action.append(x)
+        else:
+            for x in temp1:
+                last_res_publicize.append(x)
+    las_res_action = pd.DataFrame(las_res_action, columns=['num'])['num'].value_counts()
+    las_res_action = las_res_action[las_res_action.index != '']
+    las_res_action = (rank(las_res_action) + 1) / 2
+    for i in range(len(las_res_action)):
+        last_action_dict[las_res_action.index[i]] = int(las_res_action.iloc[i] * 100)
+
+    last_res_publicize = pd.DataFrame(last_res_publicize, columns=['num'])['num'].value_counts()
+    last_res_publicize = last_res_publicize[last_res_publicize.index != '']
+    last_res_publicize = (rank(last_res_publicize) + 1) / 2
+    for i in range(len(last_res_publicize)):
+        last_publicize_dict[last_res_publicize.index[i]] = int(last_res_publicize.iloc[i] * 100)
+
+    for x in all_dict.keys():
+        all_dict[x] = int(
+            0.3 * action_dict[x] + 0.3 * publicize_dict[x] + 0.2 * last_action_dict[x] + 0.2 * last_publicize_dict[x])
+    all_dict = dict(sorted(all_dict.items(), key=lambda x: x[1], reverse=True))
+    keys = list(all_dict.keys())
+
+    ranks_list = []
+
+    if len(request_date) > 0:
+        for key in keys:
+            dict_row = {}
+            dict_row['key'] = key
+            dict_row['action'] = action_dict[key]
+            dict_row['publicize'] = publicize_dict[key]
+            dict_row['last_action'] = last_action_dict[key]
+            dict_row['last_publicize'] = last_publicize_dict[key]
+            dict_row['all'] = all_dict[key]
+            ranks_list.append(dict_row)
+        response = HttpResponse()
+        response['Content-Type'] = "text/javascript"
+        response.write(json.dumps({'rows': ranks_list, 'total': len(ranks_list)}))
+        return response
+    else:
+        class Ranks(object):
+            key = str()
+            action = str()
+            publicize = str()
+            last_action = str()
+            last_publicize = str()
+            all = str()
+
+        for key in keys:
+            ranks = Ranks()
+            ranks.key = key
+            ranks.action = action_dict[key]
+            ranks.publicize = publicize_dict[key]
+            ranks.last_action = last_action_dict[key]
+            ranks.last_publicize = last_publicize_dict[key]
+            ranks.all = all_dict[key]
+            ranks_list.append(ranks)
+        context = dict(
+            ranks_list=ranks_list,
+            date_options=date_options,
+        )
+        return render(request, 'evaluation.html', context)
+
+
+def sentiment(request):
+    context = dict(
+    )
+    return render(request, 'sentiment.html', context)

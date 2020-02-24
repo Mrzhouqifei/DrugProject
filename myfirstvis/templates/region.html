@@ -1,48 +1,150 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Off-Canvas Menu Effects - Top Side</title>
+{% extends 'base.html' %}
+{% load static %}
 
-<link rel="stylesheet" type="text/css" href="/static/css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="/static/css/demo.css" />
+{% block title %}地域分析{% endblock %}
+{% block css %}{% endblock %}
 
-<!--必要样式-->
-<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="/static/css/menu_topside.css" />
-<!--[if IE]>
-<script src="/static/js/html5.js"></script>
-<![endif]-->
+{% block breadcrumb %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        地域分析
+        <!--        <small>dashboard</small>-->
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/drug/"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">地域分析</li>
+    </ol>
+</section>
+{% endblock %}
 
-<!--<link rel="stylesheet" href="/static/css/bootstrap.min.css" />-->
-<link rel="stylesheet" href="/static/css/app.css" />
-{% for jsfile_name in script_list %}
-    <script src="{{host}}/{{jsfile_name}}.js"></script>
-{% endfor %}
-<style>
-    .div-inline{float: left}
-	.boxes{color: rgba(212, 215, 229, 0.8);}
-</style>
-</head>
-<body class="bg05">
-    <header class="header">
-        <h3>毒情评估系统</h3>
-    </header>
-    <div>
-        <div class="div-inline">
-            <nav class="menu-side" style="width: 170px">
-                <a href="news">新闻提取</a>
-                <a href="region">毒情展示</a>
-                <a href="sentiment">情感分类</a>
-				<a href="demo">涉毒舆情实例</a>
-		    </nav>
-        </div>
-        <div class="div-inline" align="center">
-			    {{mymap|safe}}<br>
-			    {{mybar|safe}}
+{% block content %}
+
+
+<!-- Main content 12-->
+<section class="content">
+
+    <!-- Date and time range -->
+    <div class="box box-primary">
+        <div class="box-body">
+            {% csrf_token %}
+            <label>日期范围选择(默认全部数据):</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                        <input name="date_range" type="text" class="form-control pull-right" id="reservationtime">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary float-right" id="date">确认</button>
+            </div>
+            <!-- /.input group -->
+            <!-- /.form group -->
         </div>
     </div>
-</body>
-</html>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">各毒品相关新闻地域分布总图:</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" id="region1">
+                    {{region1|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BAR CHART -->
+            <div class="box box-pane">
+                <div class="box-header with-border">
+                    <h3 class="box-title">毒品犯罪活动地域分布图:</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" id="region3">
+                    {{region3|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BAR CHART -->
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">毒品宣传教育活动地域分布图:</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" id="region2">
+                    {{region2|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block script %}
+
+<script src="{% static 'adminlet-2.4.10/bower_components/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+<script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/jquery-knob/js/jquery.knob.js' %}"></script>
+<script>
+    var token = $('input[name=csrfmiddlewaretoken]').val();
+    $(function () {
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {format: 'MM/DD/YYYY hh:mm A'}
+        });
+        $("#date").click(function () {
+            $.ajax({
+                type: "POST",   //提交的方法
+                url: "/drug/analysis/", //提交的地址
+                data: {csrfmiddlewaretoken: token, date_range: $("#reservationtime").val()},
+                // processData: false,
+                async: false,
+                // dataType: 'json',
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {  //成功
+                    // alert('分析结束！')
+                    $("#region1").html(data.region1);
+                    $("#region2").html(data.region2);
+                    $("#region3").html(data.region3);
+                    //  window.location.href="/drug/analysis/"
+                }
+            });
+        });
+    })
+</script>
+{% endblock %}
