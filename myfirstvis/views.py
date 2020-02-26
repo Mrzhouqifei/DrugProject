@@ -7,62 +7,9 @@ from django.shortcuts import render
 from django.template import loader
 from myfirstvis.chart import *
 from news_extract.spider import main
-from sentiment_classify.classify import predict
 from . import forms
 from . import models
 import json
-
-
-def sentiment(request):
-    template = loader.get_template('sentiment.html')
-    context = dict()
-    if request.method == 'POST':
-        if request.POST:
-            raw = request.POST.get('comments', '')
-            comments = raw.split()
-            res = predict(comments)
-            display = ''
-            for x in res:
-                if x == 1:
-                    display += '接纳吸毒\n'
-                else:
-                    display += '抵制吸毒\n'
-            context['display'] = display
-            context['comments'] = raw
-    return HttpResponse(template.render(context, request))
-
-
-def demo(request):
-    template = loader.get_template('demo.html')
-    zhendong = pd.read_csv('data/zhendong_res.csv')[['0', '1', 'year']]
-
-    zhendong14 = zhendong[zhendong['year'] == '2014'].drop(['year'], axis=1)
-    zhendong14 = zhendong14.reset_index(drop=True)
-    zhendong14.columns = [['关键词', '词频']]
-
-    zhendong15 = zhendong[zhendong['year'] == '2015'].drop(['year'], axis=1)
-    zhendong15 = zhendong15.reset_index(drop=True)
-    zhendong15.columns = [['关键词', '词频']]
-
-    zhendong16 = zhendong[zhendong['year'] == '2016'].drop(['year'], axis=1)
-    zhendong16 = zhendong16.reset_index(drop=True)
-    zhendong16.columns = [['关键词', '词频']]
-
-    zhendong17 = zhendong[zhendong['year'] == '2017'].drop(['year'], axis=1)
-    zhendong17 = zhendong17.reset_index(drop=True)
-    zhendong17.columns = [['关键词', '词频']]
-
-    zhendong18 = zhendong[zhendong['year'] == '2018'].drop(['year'], axis=1)
-    zhendong18 = zhendong18.reset_index(drop=True)
-    zhendong18.columns = [['关键词', '词频']]
-
-    context = dict()
-    context['zhendong14'] = zhendong14
-    context['zhendong15'] = zhendong15
-    context['zhendong16'] = zhendong16
-    context['zhendong17'] = zhendong17
-    context['zhendong18'] = zhendong18
-    return HttpResponse(template.render(context, request))
 
 
 def login(request):
@@ -464,6 +411,50 @@ def evaluation(request):
 
 
 def sentiment(request):
+    sentiment = pd.read_csv('data/sentiment.csv')
+    sentiment.columns = ['content', 'num', 'year']
+    sentiment['num'] = sentiment['num'].astype(float)
+    positive = ['加油', '喜欢', '支持', '微笑']
+    negitive = ['吸毒', '什么', '缉毒', '警察']
+    year_list, positive_list, negitive_list = [], [], []
+    wordcouts=[]
+    for key, group in sentiment.groupby('year'):
+        year_list.append(key)
+        positive_num, negitive_num = 0, 0
+        for x in positive:
+            try:
+                positive_num += group[group.content == x]['num'].iloc[0]
+            except:
+                pass
+        for x in negitive:
+            try:
+                negitive_num += group[group.content == x]['num'].iloc[0]
+            except:
+                pass
+        sum_num = positive_num + negitive_num
+        positive_list.append(np.round(positive_num/sum_num, 2))
+        negitive_list.append(np.round(negitive_num/sum_num, 2))
+
+        wordcount_list = []
+        for i in range(len(group)):
+            wordcount_list.append((group.content.iloc[i], group.num.iloc[i]))
+        wordcouts.append(wordcloud_diamond(wordcount_list))
+
+    sentimentbar = bar2_(year_list, positive_list, negitive_list)
+
+    sentiment = sentiment.groupby(['content']).sum()
+    wordcount_list = []
+    for i in range(len(sentiment)):
+        wordcount_list.append((sentiment.index[i], sentiment.num.iloc[i]))
+    wordcoutsall = wordcloud_diamond(wordcount_list)
     context = dict(
+        wordcoutsall=wordcoutsall,
+        sentimentbar=sentimentbar,
+        wordcouts14=wordcouts[0],
+        wordcouts15=wordcouts[1],
+        wordcouts16=wordcouts[2],
+        wordcouts17=wordcouts[3],
+        wordcouts18=wordcouts[4],
+        wordcouts19=wordcouts[5],
     )
     return render(request, 'sentiment.html', context)

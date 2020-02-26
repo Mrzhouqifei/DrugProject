@@ -48,7 +48,7 @@ def wordcloud_diamond(words):
         # .set_global_opts(title_opts=opts.TitleOpts(title="WordCloud-shape-diamond"))
         .set_global_opts(  # title_opts=opts.TitleOpts(title='毒品报道情况统计'),
             toolbox_opts=opts.ToolboxOpts(),
-            xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=0)), )
+             )#xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=0)),
     )
     return c.render_embed()
 
@@ -121,3 +121,19 @@ def line_smooth(x, y, y_pred):
             xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=0)), )
     )
     return c.render_embed()
+
+
+def bar2_(x, y1, y2):
+    bar = (
+        Bar(init_opts=opts.InitOpts(width="560px", height="400px"))# theme=ThemeType.CHALK
+            .add_xaxis(x)
+            .add_yaxis('积极（错误）情绪', y1)
+            .add_yaxis('消极（正确）情绪', y2)
+            .set_series_opts(
+            label_opts=opts.LabelOpts(is_show=True),
+        )
+            .set_global_opts(#title_opts=opts.TitleOpts(title='毒品报道情况统计'),
+                             toolbox_opts=opts.ToolboxOpts(),
+                             xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=0)), )
+    )
+    return bar.render_embed()

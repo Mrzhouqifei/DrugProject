@@ -207,10 +207,11 @@
 <script src="{% static 'adminlet-2.4.10/bower_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
 <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script>
 <script src="{% static 'adminlet-2.4.10/bower_components/jquery-knob/js/jquery.knob.js' %}"></script>
+<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
 <script>
   var token = $('input[name=csrfmiddlewaretoken]').val();
   $(function () {
-    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }});
     $("#date").click(function () {
     $.ajax({
             type: "POST",   //提交的方法
@@ -223,11 +224,12 @@
                  alert("Connection error");
             },
             success: function(data) {  //成功
-              // alert('分析结束！')
+              // alert(data.wordcloud);
+              // console.log(data.wordcloud);
               $("#themepie").html(data.themepie);
               $("#actionpie").html(data.actionpie);
               $("#drugbar").html(data.drugbar);
-              $("#wordcloud").html(data.drugbar);
+              $("#wordcloud").html(data.wordcloud);
                 //  window.location.href="/drug/analysis/"
             }
          });

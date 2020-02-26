@@ -37,10 +37,8 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body" id="themepie">
-                {# 百度Echarts实现饼状图#}
-                {{themepie|safe}}
-<!--              <div style="width: 600px;height:250px;"></div>-->
+            <div class="box-body" id="wordcoutsall">
+                {{wordcoutsall|safe}}
             </div>
             <!-- /.box-body -->
           </div>
@@ -59,8 +57,8 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body" id="actionpie">
-                {{actionpie|safe}}
+            <div class="box-body" id="sentimentbar">
+                {{sentimentbar|safe}}
             </div>
             <!-- /.box-body -->
           </div>
@@ -83,8 +81,8 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body" id="drugbar">
-                {{drugbar|safe}}
+            <div class="box-body" id="wordcouts14">
+                {{wordcouts14|safe}}
             </div>
             <!-- /.box-body -->
           </div>
@@ -102,8 +100,8 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body" id="wordcloud">
-                {{wordcloud|safe}}
+            <div class="box-body" id="wordcouts15">
+                {{wordcouts15|safe}}
             </div>
             <!-- /.box-body -->
           </div>
@@ -124,8 +122,8 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body" id="drugbar">
-                {{drugbar|safe}}
+            <div class="box-body" id="wordcouts16">
+                {{wordcouts16|safe}}
             </div>
             <!-- /.box-body -->
           </div>
@@ -143,8 +141,8 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body" id="wordcloud">
-                {{wordcloud|safe}}
+            <div class="box-body" id="wordcouts17">
+                {{wordcouts17|safe}}
             </div>
             <!-- /.box-body -->
           </div>
@@ -165,8 +163,8 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body" id="drugbar">
-                {{drugbar|safe}}
+            <div class="box-body" id="wordcouts18">
+                {{wordcouts18|safe}}
             </div>
             <!-- /.box-body -->
           </div>
@@ -184,8 +182,8 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="box-body" id="wordcloud">
-                {{wordcloud|safe}}
+            <div class="box-body" id="wordcouts19">
+                {{wordcouts19|safe}}
             </div>
             <!-- /.box-body -->
           </div>
@@ -205,31 +203,5 @@
 <script src="{% static 'adminlet-2.4.10/bower_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
 <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script>
 <script src="{% static 'adminlet-2.4.10/bower_components/jquery-knob/js/jquery.knob.js' %}"></script>
-<script>
-  var token = $('input[name=csrfmiddlewaretoken]').val();
-  $(function () {
-    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
-    $("#date").click(function () {
-    $.ajax({
-            type: "POST",   //提交的方法
-            url:"/drug/analysis/", //提交的地址
-            data: {csrfmiddlewaretoken: token, date_range: $("#reservationtime").val()},
-            // processData: false,
-            async: false,
-            // dataType: 'json',
-            error: function(request) {  //失败的话
-                 alert("Connection error");
-            },
-            success: function(data) {  //成功
-              // alert('分析结束！')
-              $("#themepie").html(data.themepie);
-              $("#actionpie").html(data.actionpie);
-              $("#drugbar").html(data.drugbar);
-              $("#wordcloud").html(data.drugbar);
-                //  window.location.href="/drug/analysis/"
-            }
-         });
-       });
-  })
-</script>
+<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
 {% endblock %}

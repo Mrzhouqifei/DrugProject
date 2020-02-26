@@ -38,29 +38,7 @@
                         <input name="date_range" type="text" class="form-control pull-right" id="reservationtime">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary float-right" id="date">确认</button>
-            </div>
-            <!-- /.input group -->
-            <!-- /.form group -->
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title">各毒品相关新闻地域分布总图:</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body" id="region1">
-                    {{region1|safe}}
-                </div>
+                <button type="submit" class="btn btn-primary float-right" onclick="date()">确认</button>
             </div>
         </div>
     </div>
@@ -107,6 +85,27 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">各毒品相关新闻地域分布总图:</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" id="region1">
+                    {{region1|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </section>
 
 {% endblock %}
@@ -117,6 +116,7 @@
 <script src="{% static 'adminlet-2.4.10/bower_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
 <script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script>
 <script src="{% static 'adminlet-2.4.10/bower_components/jquery-knob/js/jquery.knob.js' %}"></script>
+<script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
 <script>
     var token = $('input[name=csrfmiddlewaretoken]').val();
     $(function () {
@@ -125,10 +125,11 @@
             timePickerIncrement: 30,
             locale: {format: 'MM/DD/YYYY hh:mm A'}
         });
-        $("#date").click(function () {
+    });
+    function date()  {
             $.ajax({
                 type: "POST",   //提交的方法
-                url: "/drug/analysis/", //提交的地址
+                url: "/drug/region/", //提交的地址
                 data: {csrfmiddlewaretoken: token, date_range: $("#reservationtime").val()},
                 // processData: false,
                 async: false,
@@ -137,14 +138,13 @@
                     alert("Connection error");
                 },
                 success: function (data) {  //成功
-                    // alert('分析结束！')
+                    // alert(data.status);
+                    console.log(data.region1);
                     $("#region1").html(data.region1);
                     $("#region2").html(data.region2);
                     $("#region3").html(data.region3);
-                    //  window.location.href="/drug/analysis/"
                 }
             });
-        });
-    })
+        }
 </script>
 {% endblock %}
