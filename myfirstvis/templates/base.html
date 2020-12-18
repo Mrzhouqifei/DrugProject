@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{% static 'adminlet-2.4.10/dist/css/skins/skin-blue.min.css' %}">
 
+
   {% block css %}{% endblock %}
 
 </head>
@@ -259,9 +260,10 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li><a href="{% url 'index' %}"><i class="fa fa-table"></i> <span>涉毒新闻</span></a></li>
         <li><a href="/drug/analysis/"><i class="fa fa-pie-chart"></i> <span>毒情分析</span></a></li>
+        <li><a href="/drug/individual/"><i class="fa fa-address-card"></i> <span>个人评估</span></a></li>
         <li><a href="/drug/region/"><i class="fa fa-anchor"></i> <span>地域评估</span></a></li>
         <li><a href="/drug/sentiment/"><i class="fa fa-desktop"></i> <span>情境评估</span></a></li>
-        <li><a href="/drug/evaluation/"><i class="fa fa-dashboard"></i> <span>地域绩效</span></a></li>
+        <li><a href="/drug/evaluation/"><i class="fa fa-dashboard"></i> <span>绩效考评</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

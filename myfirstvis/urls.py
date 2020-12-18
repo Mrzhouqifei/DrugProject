@@ -15,6 +15,7 @@ urlpatterns = [
     url('region/', views.region),
     url('evaluation/', views.evaluation),
     url('sentiment/', views.sentiment),
+    url('individual/', views.individual),
 
     # url('region/', views.region, name='region'),
     # url(r'^news$', views.news, name='news'),

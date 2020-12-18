@@ -1,0 +1,556 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}毒情评估{% endblock %}
+
+{% block css %}{% endblock %}
+
+{% block breadcrumb %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        个人评估
+        <!--        <small>dashboard</small>-->
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/drug/"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">个人评估</li>
+    </ol>
+</section>
+{% endblock %}
+
+{% block content %}
+
+<!-- Main content 12-->
+<section class="content">
+      {% csrf_token %}
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">基础风险</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+<!--                <form role="form">-->
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>年龄</label>
+                        <input type="text" class="form-control" value="18" id="age">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>民族</label>
+                        <input type="text" class="form-control" value="汉" id="nation">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>性别</label>
+                        <select class="form-control" id="gender">
+                          <option>男</option>
+                          <option>女</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>目前教育程度</label>
+                        <select class="form-control" id="education">
+                          <option>博士</option>
+                          <option>硕士</option>
+                          <option>学士</option>
+                          <option>大专</option>
+                          <option>高中</option>
+                          <option>初中</option>
+                          <option>小学</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>结婚年龄（未婚填-1）</label>
+                        <input type="text" class="form-control" value="18" id="marry">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>职业大类</label>
+                        <select class="form-control" id="profession">
+                          <option>哲学</option>
+                          <option>社会学</option>
+                          <option>经济学</option>
+                          <option>理学</option>
+                          <option>工学</option>
+                          <option>医学</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>首次吸烟年龄（不吸烟填-1）</label>
+                        <input type="text" class="form-control" value="18" id="smoke_age">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>周吸烟量（包）</label>
+                        <input type="text" class="form-control" value="7" id="smoke_num">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>戒烟年龄（不戒烟填-1）</label>
+                        <input type="text" class="form-control" value="30" id="smoke_quit">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>成瘾药物首次使用年龄（未使用过填-1）</label>
+                        <input type="text" class="form-control" value="18" id="drug_age">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>成瘾药物月使用次数</label>
+                        <input type="text" class="form-control" value="5" id="drug_num">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>首次酒精使用年龄（未使用过填-1）</label>
+                        <input type="text" class="form-control" value="18" id="alcohol_age">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>30天内的酒精使用数量（两）</label>
+                        <input type="text" class="form-control" value="10" id="alcohol_num">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>24H饮酒上限</label>
+                        <input type="text" class="form-control" value="5" id="alcohol_max">
+                      </div>
+                    </div>
+                  </div>
+
+<!--                </form>-->
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">药物滥用主观态度</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+<!--                <form role="form">-->
+                  <div class="row">
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>自我填报渴望程度（1-5分）</label>
+                        <input type="text" class="form-control" value="1" id="tianbao_kewang">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>目前生活满意度（1-5分）</label>
+                        <input type="text" class="form-control" value="1" id="life_satisfaction">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>酒精，烟草及其他药物使用动机</label>
+                        <select class="form-control" id="motivation">
+                          <option>爱好</option>
+                          <option>攀比</option>
+                          <option>缓解压力和焦虑</option>
+                          <option>无法控制</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>目前对药物主观反映</label>
+                        <select class="form-control" id="current_subjective">
+                          <option>喜欢</option>
+                          <option>一般</option>
+                          <option>讨厌</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>过去对药物主观反映</label>
+                        <select class="form-control" id="past_subjective">
+                          <option>喜欢</option>
+                          <option>一般</option>
+                          <option>讨厌</option>
+                        </select>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">药物滥用相关复发病和健康量表</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form role="form">
+                  <div class="row">
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>艾滋病感染风险综合评估（1-5分）</label>
+                        <input type="text" class="form-control" value="1" id="aids">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>禁欲时常（天）</label>
+                        <input type="text" class="form-control" value="7" id="abstinence">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>医疗条件</label>
+                        <select class="form-control" id="medical">
+                          <option>好</option>
+                          <option>中</option>
+                          <option>差</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>药物滥用治疗水平</label>
+                        <select class="form-control" id="treatment">
+                          <option>好</option>
+                          <option>中</option>
+                          <option>差</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>经济角度评估的健康质量指数</label>
+                        <select class="form-control" id="health_index">
+                          <option>好</option>
+                          <option>中</option>
+                          <option>差</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>行为健康筛查</label>
+                        <select class="form-control" id="behavioral_health">
+                          <option>好</option>
+                          <option>中</option>
+                          <option>差</option>
+                        </select>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+                <button type="submit" class="btn btn-primary float-right" onclick="date()">确认</button>
+<!--                </form>-->
+              </div>
+              <!-- /.card-body -->
+            </div>
+          </div>
+          <!--/.col (left) -->
+
+          <!-- right column -->
+          <div class="col-md-6">
+            <!-- general form elements disabled -->
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">神经行为学（各项打分1-5分）</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form role="form">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>认知灵活性</label>
+                        <input type="text" class="form-control" value="1" id="cognitive_flexibility">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>决策能力</label>
+                        <input type="text" class="form-control" value="1" id="decision_capacity">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>延迟奖励测试</label>
+                        <input type="text" class="form-control" value="1" id="delay_reward">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>行为抑制控制</label>
+                        <input type="text" class="form-control" value="1" id="behavioral_inhibition">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>冒险可能性测试</label>
+                        <input type="text" class="form-control" value="1" id="risk_possibility">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>极端行为可能性</label>
+                        <input type="text" class="form-control" value="1" id="extreme_behavior">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>对奖惩制度敏感性</label>
+                        <input type="text" class="form-control" value="1" id="punishment">
+                      </div>
+                    </div>
+
+                  </div>
+
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">社会及遗传学</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form role="form">
+                  <div class="row">
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>是否有家庭药物滥用历史</label>
+                        <select class="form-control" id="family_history">
+                          <option>是</option>
+                          <option>否</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>伴侣是否使用成瘾药品</label>
+                        <select class="form-control" id="partner_drug">
+                          <option>是</option>
+                          <option>否</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>社区风险（1-5分）</label>
+                        <input type="text" class="form-control" value="1" id="community_risk">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>家庭风险（1-5分）</label>
+                        <input type="text" class="form-control" value="1" id="family_risk">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>学校风险（1-5分）</label>
+                        <input type="text" class="form-control" value="1" id="school_risk">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>基因成瘾风险（1-5分）</label>
+                        <input type="text" class="form-control" value="1" id="genetic_risk">
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+            <!-- /.card -->
+            <!-- general form elements disabled -->
+            <!-- /.card -->
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">个人药物成瘾风险评估雷达图:</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body" id="individual_radar">
+                        {{individual_radar|safe}}
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!--/.col (right) -->
+        </div>
+
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+{% endblock %}
+
+{% block script %}
+
+<script src="{% static 'adminlet-2.4.10/bower_components/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+<script src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/jquery-knob/js/jquery.knob.js' %}"></script>
+<script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
+<script>
+    var token = $('input[name=csrfmiddlewaretoken]').val();
+    function date()  {
+            $.ajax({
+                type: "POST",   //提交的方法
+                url: "/drug/individual/", //提交的地址
+                data: {csrfmiddlewaretoken: token,
+                      age: $("#age").val(),
+                      nation: $("#nation").val(),
+                      gender: $("#gender").val(),
+                      education: $("#education").val(),
+                      marry: $("#marry").val(),
+                      profession: $("#profession").val(),
+                      smoke_age: $("#smoke_age").val(),
+                      smoke_num: $("#smoke_num").val(),
+                      smoke_quit: $("#smoke_quit").val(),
+                      drug_age: $("#drug_age").val(),
+                      drug_num: $("#drug_num").val(),
+                      alcohol_age: $("#alcohol_age").val(),
+                      alcohol_num: $("#alcohol_num").val(),
+                      alcohol_max: $("#alcohol_max").val(),
+                      tianbao_kewang: $("#tianbao_kewang").val(),
+                      life_satisfaction: $("#life_satisfaction").val(),
+                      motivation: $("#motivation").val(),
+                      current_subjective: $("#current_subjective").val(),
+                      past_subjective: $("#past_subjective").val(),
+                      aids: $("#aids").val(),
+                      abstinence: $("#abstinence").val(),
+                      medical: $("#medical").val(),
+                      treatment: $("#treatment").val(),
+                      health_index: $("#health_index").val(),
+                      behavioral_health: $("#behavioral_health").val(),
+                      cognitive_flexibility: $("#cognitive_flexibility").val(),
+                      decision_capacity: $("#decision_capacity").val(),
+                      delay_reward: $("#delay_reward").val(),
+                      behavioral_inhibition: $("#behavioral_inhibition").val(),
+                      risk_possibility: $("#risk_possibility").val(),
+                      extreme_behavior: $("#extreme_behavior").val(),
+                      punishment: $("#punishment").val(),
+                      family_history: $("#family_history").val(),
+                      partner_drug: $("#partner_drug").val(),
+                      community_risk: $("#community_risk").val(),
+                      family_risk: $("#family_risk").val(),
+                      school_risk: $("#school_risk").val(),
+                      genetic_risk: $("#genetic_risk").val()
+                },
+                // processData: false,
+                async: false,
+                // dataType: 'json',
+                error: function (request) {  //失败的话
+                    alert("Connection error");
+                },
+                success: function (data) {  //成功
+                    // alert(data.individual_radar);
+                    $("#individual_radar").html(data.individual_radar);
+                }
+            });
+        }
+</script>
+{% endblock %}

@@ -1,4 +1,4 @@
-from pyecharts.charts import Geo, Map, Bar, Pie, Line
+from pyecharts.charts import Geo, Map, Bar, Pie, Line, Radar
 from pyecharts.globals import ThemeType
 from pyecharts import options as opts
 import collections
@@ -108,6 +108,32 @@ def map_(x, y):
         )
     )
     return cmap.render_embed()
+
+
+def radar_(x):
+    # 基础风险，药物滥用主观态度，神经行为学，社会遗传学，药物滥用相关复发病和健康量表
+    # 基础风险、主观风险、神经行为风险、社会遗传风险、复发病风险
+    c = (
+        Radar()
+            .add_schema(
+            schema=[
+                opts.RadarIndicatorItem(name="基础风险", max_=100),
+                opts.RadarIndicatorItem(name="主观风险", max_=100),
+                opts.RadarIndicatorItem(name="复发病风险", max_=100),
+                opts.RadarIndicatorItem(name="神经行为风险", max_=100),
+                opts.RadarIndicatorItem(name="社会遗传风险", max_=100),
+            ]
+        )
+            .add("风险", x)
+            .set_series_opts(label_opts=opts.LabelOpts(is_show=False))
+            .set_global_opts(
+            legend_opts=opts.LegendOpts(selected_mode="single"),
+            # title_opts=opts.TitleOpts(title="Radar-单例模式"),
+        )
+            # .render("radar_selected_mode.html")
+    )
+    return c.render_embed()
+
 
 
 def line_smooth(x, y, y_pred):
