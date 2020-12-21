@@ -160,7 +160,83 @@
               </div>
               <!-- /.card-body -->
             </div>
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">神经行为学（各项打分1-5分）</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form role="form">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>认知灵活性</label>
+                        <input type="text" class="form-control" value="1" id="cognitive_flexibility">
+                      </div>
+                    </div>
 
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>决策能力</label>
+                        <input type="text" class="form-control" value="1" id="decision_capacity">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>延迟奖励测试</label>
+                        <input type="text" class="form-control" value="1" id="delay_reward">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>行为抑制控制</label>
+                        <input type="text" class="form-control" value="1" id="behavioral_inhibition">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>冒险可能性测试</label>
+                        <input type="text" class="form-control" value="1" id="risk_possibility">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>极端行为可能性</label>
+                        <input type="text" class="form-control" value="1" id="extreme_behavior">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>对奖惩制度敏感性</label>
+                        <input type="text" class="form-control" value="1" id="punishment">
+                      </div>
+                    </div>
+
+                  </div>
+
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+          </div>
+          <!--/.col (left) -->
+
+          <!-- right column -->
+          <div class="col-md-6">
+            <!-- general form elements disabled -->
             <div class="card card-warning">
               <div class="card-header">
                 <h3 class="card-title">药物滥用主观态度</h3>
@@ -304,84 +380,8 @@
               <!-- /.card-body -->
             </div>
 
-                <button type="submit" class="btn btn-primary float-right" onclick="date()">确认</button>
+
 <!--                </form>-->
-              </div>
-              <!-- /.card-body -->
-            </div>
-          </div>
-          <!--/.col (left) -->
-
-          <!-- right column -->
-          <div class="col-md-6">
-            <!-- general form elements disabled -->
-            <div class="card card-warning">
-              <div class="card-header">
-                <h3 class="card-title">神经行为学（各项打分1-5分）</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <form role="form">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>认知灵活性</label>
-                        <input type="text" class="form-control" value="1" id="cognitive_flexibility">
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>决策能力</label>
-                        <input type="text" class="form-control" value="1" id="decision_capacity">
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>延迟奖励测试</label>
-                        <input type="text" class="form-control" value="1" id="delay_reward">
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>行为抑制控制</label>
-                        <input type="text" class="form-control" value="1" id="behavioral_inhibition">
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>冒险可能性测试</label>
-                        <input type="text" class="form-control" value="1" id="risk_possibility">
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>极端行为可能性</label>
-                        <input type="text" class="form-control" value="1" id="extreme_behavior">
-                      </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>对奖惩制度敏感性</label>
-                        <input type="text" class="form-control" value="1" id="punishment">
-                      </div>
-                    </div>
-
-                  </div>
-
-                </form>
               </div>
               <!-- /.card-body -->
             </div>
@@ -451,6 +451,7 @@
                   </div>
 
                 </form>
+                <button type="submit" class="btn btn-primary float-right" onclick="date()">确认</button>
               </div>
               <!-- /.card-body -->
             </div>
@@ -460,7 +461,7 @@
             <!-- /.card -->
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="box box-danger">
                     <div class="box-header with-border">
                         <h3 class="box-title">个人药物成瘾风险评估雷达图:</h3>
@@ -475,7 +476,7 @@
                     <div class="box-body" id="individual_radar">
                         {{individual_radar|safe}}
                     </div>
-                </div>
+                  </div>
             </div>
           </div>
           <!--/.col (right) -->
