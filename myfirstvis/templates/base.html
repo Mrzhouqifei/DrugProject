@@ -25,6 +25,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{% static 'adminlet-2.4.10/dist/css/skins/skin-blue.min.css' %}">
 
+  <!-- Bootstrap 3.3.7 -->
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="{% static 'adminlet-2.4.10/dist/css/skins/_all-skins.min.css' %}">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="{% static 'adminlet-2.4.10/bower_components/morris.js/morris.css' %}">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="{% static 'adminlet-2.4.10/bower_components/jvectormap/jquery-jvectormap.css' %}">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="{% static 'adminlet-2.4.10/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'adminlet-2.4.10/bower_components/bootstrap-daterangepicker/daterangepicker.css' %}">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="{% static 'adminlet-2.4.10/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' %}">
 
   {% block css %}{% endblock %}
 
@@ -255,16 +269,42 @@ desired effect
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
+
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">导航栏</li>
+
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>毒情评估</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="/drug/individual/"><i class="fa fa-address-card"></i> <span>个人评估</span></a></li>
+
+            <li class="active treeview">
+              <a href="#">
+                <i class="fa fa-book"></i> <span>综合评估</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/drug/index/"><i class="fa fa-table"></i> <span>涉毒新闻</span></a></li>
+                <li><a href="/drug/analysis/"><i class="fa fa-pie-chart"></i> <span>毒情分析</span></a></li>
+                <li><a href="/drug/sentiment/"><i class="fa fa-desktop"></i> <span>情境评估</span></a></li>
+                <li><a href="/drug/region/"><i class="fa fa-anchor"></i> <span>地域评估</span></a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="{% url 'index' %}"><i class="fa fa-table"></i> <span>涉毒新闻</span></a></li>
-        <li><a href="/drug/analysis/"><i class="fa fa-pie-chart"></i> <span>毒情分析</span></a></li>
-        <li><a href="/drug/individual/"><i class="fa fa-address-card"></i> <span>个人评估</span></a></li>
-        <li><a href="/drug/region/"><i class="fa fa-anchor"></i> <span>地域评估</span></a></li>
-        <li><a href="/drug/sentiment/"><i class="fa fa-desktop"></i> <span>情境评估</span></a></li>
-        <li><a href="/drug/evaluation/"><i class="fa fa-dashboard"></i> <span>绩效考评</span></a></li>
+
+        <li><a href="/drug/evaluation/"><i class="fa fa-edit"></i> <span>绩效考评</span></a></li>
       </ul>
+
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
