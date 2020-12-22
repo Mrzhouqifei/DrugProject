@@ -128,7 +128,7 @@ def radar_(x):
             .set_series_opts(label_opts=opts.LabelOpts(is_show=False))
             .set_global_opts(
             legend_opts=opts.LegendOpts(selected_mode="single"),
-            # title_opts=opts.TitleOpts(title="Radar-单例模式"),
+            title_opts=opts.TitleOpts(title='平均风险：'+str(round(np.mean(x), 2))),
         )
             # .render("radar_selected_mode.html")
     )
