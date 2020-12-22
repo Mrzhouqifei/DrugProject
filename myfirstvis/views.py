@@ -35,7 +35,7 @@ def login(request):
                 request.session['c_time'] = str(user.c_time)[0:10]
                 request.session['user_email'] = user.email
                 # request.session['user_sex'] = user.sex
-                return redirect('/drug/index/')
+                return redirect('/drug/individual/')
             else:
                 message = '密码不正确！'
                 return render(request, 'login/login.html', locals())
