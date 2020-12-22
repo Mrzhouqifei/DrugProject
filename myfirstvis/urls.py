@@ -8,7 +8,7 @@ urlpatterns = [
     url('login/', views.login),
     url('register/', views.register),
     url('logout/', views.logout),
-    url('captcha/', include('captcha.urls')),
+    # url('captcha/', include('captcha.urls')),
     url('crawl/', views.crawlNews),
     url('index/', views.index),
     url('analysis/', views.analysis),

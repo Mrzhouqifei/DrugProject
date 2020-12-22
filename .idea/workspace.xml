@@ -21,7 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="fbac5aac-fd9d-4c4d-8223-5a260f4c2bba" name="Default" comment="individual">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myechartsite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myechartsite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myfirstvis/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/login/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/login/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myfirstvis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -262,7 +267,7 @@
       <workItem from="1608533023204" duration="3153000" />
       <workItem from="1608537788714" duration="2648000" />
       <workItem from="1608549189261" duration="15000" />
-      <workItem from="1608613682409" duration="6323000" />
+      <workItem from="1608613682409" duration="8022000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0">
       <created>1561638246154</created>
@@ -383,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608539417767</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="individual">
+      <created>1608632890790</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1608632890790</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
