@@ -12,6 +12,10 @@ from . import models
 import json
 
 
+def default(request):
+    return render(request, 'default.html', dict())
+
+
 def login(request):
     if request.session.get('is_login', None):  # 不允许重复登录
         return redirect('/drug/index/')
@@ -461,165 +465,169 @@ def sentiment(request):
 
 
 def individual(request):
-    # 基础风险
-    basic_risk = 0
-    age = request.POST.get('age')   # 年龄
-    nation = request.POST.get('nation')  # 民族
-    gender = request.POST.get('gender')  # 性别
-    education = request.POST.get('education')   # 教育
-    marry = request.POST.get('marry')  # 结婚年龄
-    profession = request.POST.get('profession')  # 职业大类
-    smoke_age = request.POST.get('smoke_age')  # 首次吸烟年龄
-    smoke_num = request.POST.get('smoke_num')  # 周吸烟量
-    smoke_quit = request.POST.get('smoke_quit')  # 戒烟年龄
-    drug_age = request.POST.get('drug_age')  # 成瘾药物首次使用年龄
-    drug_num = request.POST.get('drug_num')  # 月使用次数
-    alcohol_age = request.POST.get('alcohol_age')  # 首次酒精使用年龄
-    alcohol_num = request.POST.get('alcohol_num')  # 30天内酒精使用数量
-    alcohol_max = request.POST.get('alcohol_max')  # 24H饮酒上限(两)
+    age = request.POST.get('age')  # 年龄
+    if age is None:
+        return render(request, 'individual.html', dict())
+    else:
+        # 基础风险
+        basic_risk = 0
+        age = request.POST.get('age')   # 年龄
+        nation = request.POST.get('nation')  # 民族
+        gender = request.POST.get('gender')  # 性别
+        education = request.POST.get('education')   # 教育
+        marry = request.POST.get('marry')  # 结婚年龄
+        profession = request.POST.get('profession')  # 职业大类
+        smoke_age = request.POST.get('smoke_age')  # 首次吸烟年龄
+        smoke_num = request.POST.get('smoke_num')  # 周吸烟量
+        smoke_quit = request.POST.get('smoke_quit')  # 戒烟年龄
+        drug_age = request.POST.get('drug_age')  # 成瘾药物首次使用年龄
+        drug_num = request.POST.get('drug_num')  # 月使用次数
+        alcohol_age = request.POST.get('alcohol_age')  # 首次酒精使用年龄
+        alcohol_num = request.POST.get('alcohol_num')  # 30天内酒精使用数量
+        alcohol_max = request.POST.get('alcohol_max')  # 24H饮酒上限(两)
 
-    try:
-        if int(age) > 15:
-            basic_risk += 2
-        if nation == '汉':
-            basic_risk += 2
-        if gender == '女':
-            basic_risk += 2
-        if education == '大专':
-            basic_risk += 5
-        if int(marry) < 20:
-            basic_risk += 10
-        if profession == '经济学':
-            basic_risk += 5
-        if -1 < int(smoke_age) < 20:
-            basic_risk += 10
+        try:
+            if int(age) > 15:
+                basic_risk += 2
+            if nation == '汉':
+                basic_risk += 2
+            if gender == '女':
+                basic_risk += 2
+            if education == '大专':
+                basic_risk += 5
+            if int(marry) < 20:
+                basic_risk += 10
+            if profession == '经济学':
+                basic_risk += 5
+            if -1 < int(smoke_age) < 20:
+                basic_risk += 10
 
-        if int(smoke_num) > 6:
-            basic_risk += 10
-        if int(smoke_quit) < 40:
-            basic_risk = basic_risk // 2
+            if int(smoke_num) > 6:
+                basic_risk += 10
+            if int(smoke_quit) < 40:
+                basic_risk = basic_risk // 2
 
-        if int(drug_age) != -1:
-            basic_risk += 30
-        if int(drug_num) > 1:
-            basic_risk += 30
-        if int(alcohol_age) < 15:
-            basic_risk += 10
-        if int(alcohol_num) > 70:
-            basic_risk += 10
-        if int(alcohol_max) > 20:
-            basic_risk += 10
-    except:
-        print(basic_risk)
+            if int(drug_age) != -1:
+                basic_risk += 30
+            if int(drug_num) > 1:
+                basic_risk += 30
+            if int(alcohol_age) < 15:
+                basic_risk += 10
+            if int(alcohol_num) > 70:
+                basic_risk += 10
+            if int(alcohol_max) > 20:
+                basic_risk += 10
+        except:
+            print(basic_risk)
 
 
-    # ---------------------------------- 药物滥用主观程度
-    drug_abuse = 0
-    tianbao_kewang = request.POST.get('tianbao_kewang')  # 自我填报渴望程度
-    life_satisfaction = request.POST.get('life_satisfaction')  # 目前生活满意度（1-5分）
-    motivation = request.POST.get('motivation')  # 动机
-    current_subjective = request.POST.get('current_subjective')  # 目前主观
-    past_subjective = request.POST.get('past_subjective')  # 过去主观
-    try:
-        drug_abuse += int(tianbao_kewang)
-        drug_abuse = drug_abuse + (5-int(life_satisfaction)) * 2
-        if motivation == '无法控制':
-            drug_abuse += 30
-        if motivation == '爱好' or motivation == '攀比':
-            drug_abuse += 10
-        if current_subjective == '喜欢':
-            drug_abuse += 10
-        if current_subjective == '一般':
-            drug_abuse += 5
-        if past_subjective == '喜欢':
-            drug_abuse += 8
-        if past_subjective == '一般':
-            drug_abuse += 2
-    except:
-        print(drug_abuse)
-    drug_abuse = int(drug_abuse * 1.5)
+        # ---------------------------------- 药物滥用主观程度
+        drug_abuse = 0
+        tianbao_kewang = request.POST.get('tianbao_kewang')  # 自我填报渴望程度
+        life_satisfaction = request.POST.get('life_satisfaction')  # 目前生活满意度（1-5分）
+        motivation = request.POST.get('motivation')  # 动机
+        current_subjective = request.POST.get('current_subjective')  # 目前主观
+        past_subjective = request.POST.get('past_subjective')  # 过去主观
+        try:
+            drug_abuse += int(tianbao_kewang)
+            drug_abuse = drug_abuse + (5-int(life_satisfaction)) * 2
+            if motivation == '无法控制':
+                drug_abuse += 30
+            if motivation == '爱好' or motivation == '攀比':
+                drug_abuse += 10
+            if current_subjective == '喜欢':
+                drug_abuse += 10
+            if current_subjective == '一般':
+                drug_abuse += 5
+            if past_subjective == '喜欢':
+                drug_abuse += 8
+            if past_subjective == '一般':
+                drug_abuse += 2
+        except:
+            print(drug_abuse)
+        drug_abuse = int(drug_abuse * 1.5)
 
-    # --------------------------------药物滥用相关复发病和健康量表
-    relapse = 0
-    aids = request.POST.get('aids')
-    abstinence = request.POST.get('abstinence')  # 禁欲时常（天）
-    medical = request.POST.get('medical')
-    treatment = request.POST.get('treatment')
-    health_index = request.POST.get('health_index')  # 经济角度评估的健康质量指数
-    behavioral_health = request.POST.get('behavioral_health')  # 行为健康筛查
+        # --------------------------------药物滥用相关复发病和健康量表
+        relapse = 0
+        aids = request.POST.get('aids')
+        abstinence = request.POST.get('abstinence')  # 禁欲时常（天）
+        medical = request.POST.get('medical')
+        treatment = request.POST.get('treatment')
+        health_index = request.POST.get('health_index')  # 经济角度评估的健康质量指数
+        behavioral_health = request.POST.get('behavioral_health')  # 行为健康筛查
 
-    try:
-        relapse += 4 * int(aids)
-        if int(abstinence) < 2:
-            relapse += 5
-        if medical == '中':
-            relapse += 2
-        if medical == '差':
-            relapse += 5
-        if treatment == '中':
-            relapse += 2
-        if treatment == '差':
-            relapse += 5
-        if health_index == '中':
-            relapse += 2
-        if health_index == '差':
-            relapse += 5
-        if behavioral_health == '中':
-            relapse += 2
-        if behavioral_health == '差':
-            relapse += 5
-    except:
-        print(relapse)
+        try:
+            relapse += 4 * int(aids)
+            if int(abstinence) < 2:
+                relapse += 5
+            if medical == '中':
+                relapse += 2
+            if medical == '差':
+                relapse += 5
+            if treatment == '中':
+                relapse += 2
+            if treatment == '差':
+                relapse += 5
+            if health_index == '中':
+                relapse += 2
+            if health_index == '差':
+                relapse += 5
+            if behavioral_health == '中':
+                relapse += 2
+            if behavioral_health == '差':
+                relapse += 5
+        except:
+            print(relapse)
 
-    relapse = relapse * 2
+        relapse = relapse * 2
 
-    # -------------------------神经行为学
-    neurobehavioral = 0
-    cognitive_flexibility = request.POST.get('cognitive_flexibility')  # 认知灵活性
-    decision_capacity = request.POST.get('decision_capacity')  # 决策能力
-    delay_reward = request.POST.get('delay_reward')  # 延迟奖励
-    behavioral_inhibition = request.POST.get('behavioral_inhibition')  # 行为抑制控制
-    risk_possibility = request.POST.get('risk_possibility')  # 冒险可能性测试
-    extreme_behavior = request.POST.get('extreme_behavior')  # 极端行为可能性
-    punishment = request.POST.get('punishment')  # 对奖惩制度敏感性
-    try:
-        neurobehavioral += (5 - int(cognitive_flexibility))
-        neurobehavioral += (5 - int(decision_capacity))
-        neurobehavioral += (5 - int(delay_reward))
-        neurobehavioral += (5 - int(behavioral_inhibition))
-        neurobehavioral += int(risk_possibility)
-        neurobehavioral += int(extreme_behavior) * 2
-        neurobehavioral += (5 - int(punishment))
-    except:
-        print(neurobehavioral)
-    neurobehavioral = neurobehavioral * 2
+        # -------------------------神经行为学
+        neurobehavioral = 0
+        cognitive_flexibility = request.POST.get('cognitive_flexibility')  # 认知灵活性
+        decision_capacity = request.POST.get('decision_capacity')  # 决策能力
+        delay_reward = request.POST.get('delay_reward')  # 延迟奖励
+        behavioral_inhibition = request.POST.get('behavioral_inhibition')  # 行为抑制控制
+        risk_possibility = request.POST.get('risk_possibility')  # 冒险可能性测试
+        extreme_behavior = request.POST.get('extreme_behavior')  # 极端行为可能性
+        punishment = request.POST.get('punishment')  # 对奖惩制度敏感性
+        try:
+            neurobehavioral += (5 - int(cognitive_flexibility))
+            neurobehavioral += (5 - int(decision_capacity))
+            neurobehavioral += (5 - int(delay_reward))
+            neurobehavioral += (5 - int(behavioral_inhibition))
+            neurobehavioral += int(risk_possibility)
+            neurobehavioral += int(extreme_behavior) * 2
+            neurobehavioral += (5 - int(punishment))
+        except:
+            print(neurobehavioral)
+        neurobehavioral = neurobehavioral * 2
 
-    # -------------------------社会及遗传学
-    genetic = 0
-    family_history = request.POST.get('family_history')  # 是否有家庭药物滥用历史
-    partner_drug = request.POST.get('partner_drug')  # 伴侣是否使用成瘾药品
-    community_risk = request.POST.get('community_risk')  # 社区风险
-    family_risk = request.POST.get('family_risk')  # 家庭风险
-    school_risk = request.POST.get('school_risk')  # 学校风险
-    genetic_risk = request.POST.get('genetic_risk')  # 基因成瘾风险
-    try:
-        if family_history == '是':
-            genetic += 30
-        if partner_drug == '是':
-            genetic += 40
-        genetic += int(community_risk)
-        genetic += int(family_risk) * 4
-        genetic += int(school_risk)
-        genetic += int(genetic_risk) * 3
-    except:
-        print(genetic)
-    genetic = min(99, genetic)
+        # -------------------------社会及遗传学
+        genetic = 0
+        family_history = request.POST.get('family_history')  # 是否有家庭药物滥用历史
+        partner_drug = request.POST.get('partner_drug')  # 伴侣是否使用成瘾药品
+        community_risk = request.POST.get('community_risk')  # 社区风险
+        family_risk = request.POST.get('family_risk')  # 家庭风险
+        school_risk = request.POST.get('school_risk')  # 学校风险
+        genetic_risk = request.POST.get('genetic_risk')  # 基因成瘾风险
+        try:
+            if family_history == '是':
+                genetic += 30
+            if partner_drug == '是':
+                genetic += 40
+            genetic += int(community_risk)
+            genetic += int(family_risk) * 4
+            genetic += int(school_risk)
+            genetic += int(genetic_risk) * 3
+        except:
+            print(genetic)
+        genetic = min(99, genetic)
 
-    individual_radar = radar_([[basic_risk, drug_abuse, relapse, neurobehavioral, genetic]])
-    context = dict(
-        individual_radar=individual_radar,
-    )
-    if basic_risk != 0:
-        response = JsonResponse({"status": '服务器接收成功', 'individual_radar': individual_radar})
-        return response
-    return render(request, 'individual.html', context)
+        individual_radar = radar_([[basic_risk, drug_abuse, relapse, neurobehavioral, genetic]])
+        context = dict(
+            individual_radar=individual_radar,
+        )
+        if basic_risk != 0:
+            response = JsonResponse({"status": '服务器接收成功', 'individual_radar': individual_radar})
+            return response
+        return render(request, 'individual.html', context)

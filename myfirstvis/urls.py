@@ -22,6 +22,7 @@ urlpatterns = [
     # url(r'^sentiment$', views.sentiment, name='sentiment'),
     # url(r'^demo', views.demo, name='demo'),
     # url(r'^', views.index, name='index')
-    url(r'^', views.individual, name='individual')
+    # url(r'^', views.individual, name='individual')
+    url(r'^', views.default, name='default')
 ]
 

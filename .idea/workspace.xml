@@ -20,8 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbac5aac-fd9d-4c4d-8223-5a260f4c2bba" name="Default" comment="评估">
+      <change afterPath="$PROJECT_DIR$/myfirstvis/templates/default.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myechartsite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myechartsite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/individual.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/individual.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myfirstvis/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -264,7 +267,10 @@
       <workItem from="1608549189261" duration="15000" />
       <workItem from="1608613682409" duration="8574000" />
       <workItem from="1608635609828" duration="12000" />
-      <workItem from="1608636325345" duration="154000" />
+      <workItem from="1608636325345" duration="278000" />
+      <workItem from="1608685877475" duration="677000" />
+      <workItem from="1608692802646" duration="578000" />
+      <workItem from="1608705395412" duration="1549000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0">
       <created>1561638246154</created>
@@ -406,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608634888637</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="评估">
+      <created>1608636585290</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1608636585290</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
