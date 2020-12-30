@@ -113,7 +113,52 @@
           <!-- DONUT CHART -->
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">涉毒新闻主题类别饼状图:</h3>
+              <h3 class="box-title">涉毒行为分析:</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="actionpie">
+                {{actionpie|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+
+        <div class="col-md-6">
+            <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">药物分析:</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body" id="drugbar">
+                {{drugbar|safe}}
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+
+        <!-- /.col (RIGHT) -->
+        <!-- /.col (RIGHT) -->
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">涉毒主题分析:</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -130,55 +175,12 @@
           </div>
           <!-- /.box -->
         </div>
-        <!-- /.col (RIGHT) -->
-        <div class="col-md-6">
-          <!-- DONUT CHART -->
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">涉毒行为饼状图:</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body" id="actionpie">
-                {{actionpie|safe}}
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col (RIGHT) -->
-      </div>
-
-
-      <div class="row">
-        <div class="col-md-6">
-            <!-- BAR CHART -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">各毒品报道数量统计:</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body" id="drugbar">
-                {{drugbar|safe}}
-            </div>
-            <!-- /.box-body -->
-          </div>
-        </div>
 
         <div class="col-md-6">
             <!-- BAR CHART -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">新闻词云图:</h3>
+              <h3 class="box-title">涉毒新闻词云:</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -192,6 +194,8 @@
             <!-- /.box-body -->
           </div>
         </div>
+
+
 
       </div>
 <!--      </div>-->
