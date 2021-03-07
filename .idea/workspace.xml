@@ -20,9 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbac5aac-fd9d-4c4d-8223-5a260f4c2bba" name="Default" comment="评估">
+      <change beforePath="$PROJECT_DIR$/.idea/DrugProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DrugProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myfirstvis/templates/analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myfirstvis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/sentiment.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/sentiment.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +92,12 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/myfirstvis/templates" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -269,7 +280,14 @@
       <workItem from="1608692802646" duration="578000" />
       <workItem from="1608705395412" duration="1696000" />
       <workItem from="1608707409994" duration="1666000" />
-      <workItem from="1609332352338" duration="2221000" />
+      <workItem from="1609332352338" duration="2259000" />
+      <workItem from="1609388561034" duration="31000" />
+      <workItem from="1613629271179" duration="129000" />
+      <workItem from="1613647248642" duration="1893000" />
+      <workItem from="1613725625676" duration="2030000" />
+      <workItem from="1613814036126" duration="730000" />
+      <workItem from="1613899772713" duration="272000" />
+      <workItem from="1614997329170" duration="3545000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0">
       <created>1561638246154</created>
@@ -432,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608707544270</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="评估">
+      <created>1609335316650</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1609335316650</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
