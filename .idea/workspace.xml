@@ -20,14 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbac5aac-fd9d-4c4d-8223-5a260f4c2bba" name="Default" comment="评估">
-      <change beforePath="$PROJECT_DIR$/.idea/DrugProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DrugProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/chart.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myfirstvis/templates/analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/analysis.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myfirstvis/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myfirstvis/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/sentiment.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/sentiment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/templates/region.html" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/templates/region.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +288,9 @@
       <workItem from="1613725625676" duration="2030000" />
       <workItem from="1613814036126" duration="730000" />
       <workItem from="1613899772713" duration="272000" />
-      <workItem from="1614997329170" duration="3545000" />
+      <workItem from="1614997329170" duration="4910000" />
+      <workItem from="1615098477842" duration="4239000" />
+      <workItem from="1615192975462" duration="8129000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0">
       <created>1561638246154</created>
@@ -457,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609335316650</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="评估">
+      <created>1615087999281</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1615087999282</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

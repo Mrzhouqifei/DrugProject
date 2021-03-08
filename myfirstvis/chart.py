@@ -100,7 +100,7 @@ def map_(x, y):
     #[("海门", 9), ("鄂尔多斯", 12), ("大庆", 279)]
     cmap = (
         Map(init_opts=opts.InitOpts(width="1100px", height="550px"))#, theme=ThemeType.CHALK
-        .add('统计数目', [list(z) for z in zip(x, y)], maptype="china", is_roam=False, zoom=1.2)#"",, "china"
+        .add('得分', [list(z) for z in zip(x, y)], maptype="china", is_roam=False, zoom=1.2)#"",, "china"
         .set_global_opts(
             # title_opts=opts.TitleOpts(subtitle='数据主要来源于:中国禁毒网|禁毒在线|新浪新闻'),#title="中国毒情区域分布",
             visualmap_opts=opts.VisualMapOpts(max_=max_count),#max_=max_count, textstyle_opts=opts.TextStyleOpts(color='#fff')

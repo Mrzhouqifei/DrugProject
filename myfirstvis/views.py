@@ -39,7 +39,7 @@ def login(request):
                 request.session['c_time'] = str(user.c_time)[0:10]
                 request.session['user_email'] = user.email
                 # request.session['user_sex'] = user.sex
-                return redirect('/drug/individual/')
+                return redirect('/drug/analysis/')
             else:
                 message = '密码不正确！'
                 return render(request, 'login/login.html', locals())
@@ -200,11 +200,34 @@ def analysis(request):
     wordcloud = wordcloud_diamond(wordCount(word_temp))
     # -----------------------word end--------------------------
 
+
+
+    theme = models.News.objects.filter(news_date__gt=startdate,
+                                       news_date__lte=enddate).values_list("news_theme", flat=True)
+    province = models.News.objects.filter(news_date__gt=startdate,
+                                          news_date__lte=enddate).values_list("news_province", flat=True)
+    theme = pd.Series(theme)
+    theme = list((theme == '缉毒破案') | (theme == '曝光台'))
+
+    # -----------------------region1 begin------------------------
+    res_all = []
+    for i in range(len(province)):
+        temp1 = province[i].split(',')
+        for x in temp1:
+            res_all.append(x)
+    res_all = pd.DataFrame(res_all, columns=['num'])['num'].value_counts()
+    res_all = res_all[res_all.index != '']
+    res_name = list(res_all.index)
+    num = list(res_all)
+    region1 = map_(res_name, num)
+
+
     context = dict(
         drugbar=drugbar,
         themepie=themepie,
         actionpie=actionpie,
         wordcloud=wordcloud,
+        region1=region1,
     )
     if len(date_range) > 0:
         response = JsonResponse({"status": '服务器接收成功', 'themepie': themepie, 'actionpie': actionpie,
@@ -235,29 +258,29 @@ def region(request):
     theme = list((theme == '缉毒破案') | (theme == '曝光台'))
 
     # -----------------------region1 begin------------------------
-    res_all = []
-    for i in range(len(province)):
-        temp1 = province[i].split(',')
-        for x in temp1:
-            res_all.append(x)
-    res_all = pd.DataFrame(res_all, columns=['num'])['num'].value_counts()
-    res_all = res_all[res_all.index != '']
-    res_name = list(res_all.index)
-    num = list(res_all)
-    region1 = map_(res_name, num)
-
-    # -----------------------region2 begin------------------------
-    res_all = []
-    for i in range(len(province)):
-        if not theme[i]:
-            temp1 = province[i].split(',')
-            for x in temp1:
-                res_all.append(x)
-    res_all = pd.DataFrame(res_all, columns=['num'])['num'].value_counts()
-    res_all = res_all[res_all.index != '']
-    res_name = list(res_all.index)
-    num = list(res_all)
-    region2 = map_(res_name, num)
+    # res_all = []
+    # for i in range(len(province)):
+    #     temp1 = province[i].split(',')
+    #     for x in temp1:
+    #         res_all.append(x)
+    # res_all = pd.DataFrame(res_all, columns=['num'])['num'].value_counts()
+    # res_all = res_all[res_all.index != '']
+    # res_name = list(res_all.index)
+    # num = list(res_all)
+    # region1 = map_(res_name, num)
+    #
+    # # -----------------------region2 begin------------------------
+    # res_all = []
+    # for i in range(len(province)):
+    #     if not theme[i]:
+    #         temp1 = province[i].split(',')
+    #         for x in temp1:
+    #             res_all.append(x)
+    # res_all = pd.DataFrame(res_all, columns=['num'])['num'].value_counts()
+    # res_all = res_all[res_all.index != '']
+    # res_name = list(res_all.index)
+    # num = list(res_all)
+    # region2 = map_(res_name, num)
 
     # -----------------------region3 begin------------------------
     res_all = []
@@ -273,8 +296,8 @@ def region(request):
     region3 = map_(res_name, num)
 
     context = dict(
-        region1=region1,
-        region2=region2,
+        # region1=region1,
+        # region2=region2,
         region3=region3,
     )
     if len(date_range) > 0:
