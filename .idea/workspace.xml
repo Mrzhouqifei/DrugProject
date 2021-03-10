@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fbac5aac-fd9d-4c4d-8223-5a260f4c2bba" name="Default" comment="评估">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myfirstvis/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myfirstvis/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +285,8 @@
       <workItem from="1615098477842" duration="4239000" />
       <workItem from="1615192975462" duration="8149000" />
       <workItem from="1615354423186" duration="154000" />
-      <workItem from="1615354752066" duration="327000" />
+      <workItem from="1615354752066" duration="1125000" />
+      <workItem from="1615361384331" duration="2168000" />
     </task>
     <task id="LOCAL-00001" summary="v1.0">
       <created>1561638246154</created>
@@ -468,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615215513617</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="评估">
+      <created>1615355377765</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1615355377766</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

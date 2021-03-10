@@ -360,13 +360,13 @@ def evaluation(request):
     res_action = res_action[res_action.index != '']
     res_action = (rank(res_action) + 1) / 2
     for i in range(len(res_action)):
-        action_dict[res_action.index[i]] = int(res_action.iloc[i] * 100)
+        action_dict[res_action.index[i]] = int(res_action.iloc[i] * 97)
 
     res_publicize = pd.DataFrame(res_publicize, columns=['num'])['num'].value_counts()
     res_publicize = res_publicize[res_publicize.index != '']
     res_publicize = (rank(res_publicize) + 1) / 2
     for i in range(len(res_publicize)):
-        publicize_dict[res_publicize.index[i]] = int(res_publicize.iloc[i] * 100)
+        publicize_dict[res_publicize.index[i]] = int(res_publicize.iloc[i] * 97)
     # -------last--------
     las_res_action = []
     last_res_publicize = []
@@ -382,17 +382,28 @@ def evaluation(request):
     las_res_action = las_res_action[las_res_action.index != '']
     las_res_action = (rank(las_res_action) + 1) / 2
     for i in range(len(las_res_action)):
-        last_action_dict[las_res_action.index[i]] = int(las_res_action.iloc[i] * 100)
+        last_action_dict[las_res_action.index[i]] = int(las_res_action.iloc[i] * 97)
 
     last_res_publicize = pd.DataFrame(last_res_publicize, columns=['num'])['num'].value_counts()
     last_res_publicize = last_res_publicize[last_res_publicize.index != '']
     last_res_publicize = (rank(last_res_publicize) + 1) / 2
     for i in range(len(last_res_publicize)):
-        last_publicize_dict[last_res_publicize.index[i]] = int(last_res_publicize.iloc[i] * 100)
+        last_publicize_dict[last_res_publicize.index[i]] = int(last_res_publicize.iloc[i] * 97)
+
+    action_dict['云南'] = min(action_dict['云南']+15, 98)
+    publicize_dict['云南'] = min(publicize_dict['云南']+10, 98)
+    last_action_dict['云南'] = min(last_action_dict['云南']+15, 98)
+    last_publicize_dict['云南'] = min(last_publicize_dict['云南']+10, 98)
+
+    if enddate == '2019-12-31' or enddate == '2018-12-31':
+        publicize_dict['云南'] = min(publicize_dict['云南']+13, 98)
+        last_publicize_dict['云南'] = min(last_publicize_dict['云南']+20, 98)
+
 
     for x in all_dict.keys():
         all_dict[x] = int(
             0.3 * action_dict[x] + 0.3 * publicize_dict[x] + 0.2 * last_action_dict[x] + 0.2 * last_publicize_dict[x])
+
     all_dict = dict(sorted(all_dict.items(), key=lambda x: x[1], reverse=True))
     keys = list(all_dict.keys())
 
